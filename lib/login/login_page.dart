@@ -74,7 +74,7 @@ class LoginState extends State<LoginPage> {
                           onPressed: () => {
                             if (email != "" && password != "") print('Logado')
                           },
-                          child: Text('Sign Up'),
+                          child: Text('Log in'),
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Color.fromARGB(255, 0, 177, 136),
                               minimumSize: Size(510, 55),
