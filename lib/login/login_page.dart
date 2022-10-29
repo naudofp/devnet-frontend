@@ -1,3 +1,4 @@
+import 'package:custom_signin_buttons/custom_signin_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:schooltech/app_controller.dart';
 
@@ -15,14 +16,6 @@ class LoginState extends State<LoginPage> {
     String password = "";
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 0, 177, 136),
-        title: const Text(
-          'SchoolTech',
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
-        ),
-        actions: [SwitchTheme()],
-      ),
       body: SingleChildScrollView(
           child: SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -72,15 +65,44 @@ class LoginState extends State<LoginPage> {
                         ),
                         ElevatedButton(
                           onPressed: () => {
-                            if (email != "" && password != "") print('Logado')
+                            //if (email != "" && password != "")
+                            //{
+                            Navigator.of(context).pushReplacementNamed('/home')
+                            //}
                           },
-                          child: Text('Log in'),
+                          child: Text('Sign in'),
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Color.fromARGB(255, 0, 177, 136),
                               minimumSize: Size(510, 55),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15))),
-                        )
+                        ),
+                        Padding(padding: EdgeInsets.all(25)),
+                        SignInButton(
+                          button: Button.Facebook,
+                          width: 510,
+                          height: 47,
+                          borderRadius: 15,
+                        ),
+                        Padding(padding: EdgeInsets.all(7)),
+                        SignInButton(
+                          button: Button.LinkedIn,
+                          width: 510,
+                          height: 47,
+                          borderRadius: 15,
+                        ),
+                        SizedBox(
+                          height: 100,
+                        ),
+                        Container(
+                            alignment: Alignment.bottomCenter,
+                            child: TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  'Sign up',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 0, 177, 136)),
+                                )))
                       ])))),
     );
   }
