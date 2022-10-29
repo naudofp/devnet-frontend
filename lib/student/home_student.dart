@@ -14,6 +14,7 @@ class HomeStudentState extends State<HomeStudent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MenuBurguer(),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 0, 177, 136),
         title: const Text(
@@ -35,6 +36,41 @@ class HomeStudentState extends State<HomeStudent> {
                 ))
           ],
         ),
+      ),
+    );
+  }
+}
+
+class MenuBurguer extends StatelessWidget {
+  const MenuBurguer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: Column(
+        children: [
+          UserAccountsDrawerHeader(
+              decoration: BoxDecoration(color: Colors.black87),
+              accountName: Text('Fellipe'),
+              accountEmail: Text('felipenaudof@gmail.com')),
+          ListTile(
+            leading: Icon(Icons.school),
+            title: Text('Your University'),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.book),
+            title: Text('Your courses'),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.logout_sharp),
+            title: Text('Logout'),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed('/');
+            },
+          ),
+        ],
       ),
     );
   }
