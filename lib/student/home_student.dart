@@ -19,7 +19,7 @@ class HomeStudentState extends State<HomeStudent> {
         backgroundColor: const Color.fromARGB(255, 0, 177, 136),
         title: const Text(
           'SchoolTech',
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
         ),
         actions: [SwitchTheme()],
       ),
