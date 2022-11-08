@@ -1,7 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:schooltech/app_controller.dart';
+import 'package:schooltech/app/view/core/your_courses_view.dart';
+import 'package:schooltech/app/view/student/home_student_view.dart';
+import 'package:schooltech/app/view/student/universityStudent/your_university_view.dart';
+import 'package:schooltech/app/controller/app_controller.dart';
 
 class HomeStudent extends StatefulWidget {
   @override
@@ -11,33 +12,40 @@ class HomeStudent extends StatefulWidget {
 }
 
 class HomeStudentState extends State<HomeStudent> {
+  int currentOption = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MenuBurguer(),
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 0, 177, 136),
-        title: const Text(
-          'SchoolTech',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-        ),
-        actions: [SwitchTheme()],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 50),
-            Container(
-                alignment: Alignment.topCenter,
-                child: Image.asset(
-                  'assets/images/avatar_male.png',
-                  width: 200,
-                  height: 200,
-                ))
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: currentOption,
+          onTap: (value) {
+            setState(() {
+              currentOption = value;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.school), label: 'Your University'),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.book), label: 'Your Courses'),
           ],
         ),
-      ),
-    );
+        drawer: MenuBurguer(),
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 0, 177, 136),
+          title: const Text(
+            'SchoolTech',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+          ),
+          actions: [SwitchTheme()],
+        ),
+        body: IndexedStack(
+          index: currentOption,
+          children: [YourUniversity(), HomeStudentView(), YourCourses()],
+        ));
   }
 }
 

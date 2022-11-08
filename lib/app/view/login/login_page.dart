@@ -1,6 +1,6 @@
 import 'package:custom_signin_buttons/custom_signin_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:schooltech/app_controller.dart';
+import 'package:schooltech/app/controller/app_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -86,7 +86,6 @@ class LoginState extends State<LoginPage> {
                             ),
                             ElevatedButton(
                               onPressed: () => {
-                                login(),
                                 Navigator.of(context)
                                     .pushReplacementNamed('/home-student')
                               },
@@ -171,11 +170,4 @@ class SwitchTheme extends StatelessWidget {
       },
     );
   }
-}
-
-Future login() async {
-  var url = Uri.parse('http://localhost:8080/course');
-  var response = await http.get(url);
-  print(response);
-  return false;
 }
