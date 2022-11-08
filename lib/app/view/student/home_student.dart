@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schooltech/app/view/core/your_courses_view.dart';
-import 'package:schooltech/app/view/student/home_student_view.dart';
+import 'package:schooltech/app/view/student/home_page_view.dart';
 import 'package:schooltech/app/view/student/universityStudent/your_university_view.dart';
 import 'package:schooltech/app/controller/app_controller.dart';
 
@@ -12,6 +12,7 @@ class HomeStudent extends StatefulWidget {
 }
 
 class HomeStudentState extends State<HomeStudent> {
+  static HomeStudent instance = HomeStudent();
   int currentOption = 1;
 
   @override
@@ -44,7 +45,7 @@ class HomeStudentState extends State<HomeStudent> {
         ),
         body: IndexedStack(
           index: currentOption,
-          children: [YourUniversity(), HomeStudentView(), YourCourses()],
+          children: [YourUniversity(), HomePageStudentView(), YourCourses()],
         ));
   }
 }

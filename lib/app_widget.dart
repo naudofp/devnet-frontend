@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:schooltech/app/view/student/search/search_course_view.dart';
 import 'package:schooltech/app/view/student/search/search_universitys_view.dart';
@@ -13,10 +15,11 @@ class AppWidget extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           theme: ThemeData(
-              primaryColor: Colors.deepPurpleAccent,
-              brightness: AppController.instance.isDark
-                  ? Brightness.dark
-                  : Brightness.light),
+            primaryColor: Colors.deepPurpleAccent,
+            brightness: AppController.instance.isDark
+                ? Brightness.dark
+                : Brightness.light,
+          ),
           routes: {
             '/': (context) => LoginPage(),
             '/home-student': (context) => HomeStudent(),

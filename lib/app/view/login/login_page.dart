@@ -23,7 +23,8 @@ class LoginState extends State<LoginPage> {
             height: 800,
             alignment: Alignment.center,
             child: Padding(
-              padding: EdgeInsets.all(28.0),
+              padding:
+                  EdgeInsets.only(top: 25, left: 10, right: 10, bottom: 25),
               child: Form(
                 key: formKey,
                 child: Card(
