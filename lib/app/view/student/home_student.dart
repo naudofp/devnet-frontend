@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:schooltech/app/components/switch_theme.dart';
 import 'package:schooltech/app/view/core/your_courses_view.dart';
 import 'package:schooltech/app/view/student/home_page_view.dart';
 import 'package:schooltech/app/view/student/universityStudent/your_university_view.dart';
-import 'package:schooltech/app/controller/app_controller.dart';
 
 class HomeStudent extends StatefulWidget {
   @override
@@ -41,7 +41,7 @@ class HomeStudentState extends State<HomeStudent> {
             'SchoolTech',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
           ),
-          actions: [SwitchTheme()],
+          actions: [SwitchThemeButton()],
         ),
         body: IndexedStack(
           index: currentOption,
@@ -82,16 +82,5 @@ class MenuBurguer extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class SwitchTheme extends StatelessWidget {
-  const SwitchTheme({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Switch(
-        value: AppController.instance.isDark,
-        onChanged: (value) => {AppController.instance.changeTheme()});
   }
 }

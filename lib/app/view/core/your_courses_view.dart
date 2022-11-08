@@ -12,7 +12,7 @@ class YourCourses extends StatelessWidget {
     return Container(
       child: Padding(
         padding:
-            const EdgeInsets.only(top: 50, left: 25, right: 25, bottom: 10),
+            const EdgeInsets.only(top: 50, left: 25, right: 25, bottom: 30),
         child: Column(
           children: [
             Center(
