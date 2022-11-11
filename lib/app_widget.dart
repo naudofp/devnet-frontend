@@ -1,11 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:schooltech/app/view/student/search/search_course_view.dart';
-import 'package:schooltech/app/view/student/search/search_universitys_view.dart';
-import 'package:schooltech/app/controller/app_controller.dart';
-import 'package:schooltech/app/view/login/login_page.dart';
-import 'package:schooltech/app/view/student/home_student.dart';
+import 'package:schooltech/app/views/core/course_details_view.dart';
+import 'package:schooltech/app/views/student/search/search_course_view.dart';
+import 'package:schooltech/app/views/student/search/search_universitys_view.dart';
+import 'package:schooltech/app/controllers/app_controller.dart';
+import 'package:schooltech/app/views/login/login_page.dart';
+import 'package:schooltech/app/views/student/home_student.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -25,6 +26,7 @@ class AppWidget extends StatelessWidget {
             '/home-student': (context) => HomeStudent(),
             '/search-univeristys': (context) => SearchUniversity(),
             '/search-courses': (context) => SearchCourse(),
+            '/details-course': (context) => CourseDetails(),
           },
         );
       },
