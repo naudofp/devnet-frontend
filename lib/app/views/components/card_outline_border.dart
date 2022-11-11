@@ -1,17 +1,21 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
-import 'package:schooltech/app/controller/app_controller.dart';
+import 'package:schooltech/app/controllers/app_controller.dart';
 
 class CardOutlineBorder extends StatelessWidget {
   final String title;
   final String subtitle;
   final double sizeTitle;
   final double sizeSubtitle;
+  final String route;
 
   const CardOutlineBorder({
     required this.title,
     required this.subtitle,
     required this.sizeTitle,
     required this.sizeSubtitle,
+    required this.route,
   });
 
   @override
@@ -19,7 +23,9 @@ class CardOutlineBorder extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 18),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          if (this.route != "") Navigator.of(context).pushNamed(route);
+        },
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: 70,

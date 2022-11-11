@@ -1,8 +1,9 @@
 import 'package:custom_signin_buttons/custom_signin_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:schooltech/app/controller/app_controller.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
+import 'package:schooltech/app/controllers/app_controller.dart';
+import 'package:schooltech/app/controllers/user_controller.dart';
+import 'package:schooltech/app/models/user/UserLogin.dart';
+import 'package:schooltech/app/models/user/user_holder.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -15,6 +16,9 @@ class LoginState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  UserController controller = UserController();
+  UserLogin userLogin = UserLogin('', '');
 
   Widget _body() {
     return SingleChildScrollView(
@@ -57,6 +61,9 @@ class LoginState extends State<LoginPage> {
                                         return "Invalid email";
                                       }
                                     },
+                                    onChanged: (value) {
+                                      userLogin.email = value;
+                                    },
                                     decoration: InputDecoration(
                                         labelText: 'Email',
                                         border: OutlineInputBorder(
@@ -74,6 +81,9 @@ class LoginState extends State<LoginPage> {
                                         return null;
                                       },
                                       obscureText: true,
+                                      onChanged: (value) {
+                                        userLogin.password = value;
+                                      },
                                       decoration: InputDecoration(
                                           labelText: 'Password',
                                           border: OutlineInputBorder(
@@ -86,9 +96,18 @@ class LoginState extends State<LoginPage> {
                               ),
                             ),
                             ElevatedButton(
-                              onPressed: () => {
-                                Navigator.of(context)
-                                    .pushReplacementNamed('/home-student')
+                              onPressed: () async {
+                                await controller.login(userLogin);
+                                UserHolder holder = controller.holder;
+
+                                if (holder.role == 'STUDENT_USER') {
+                                  controller.setHolder(holder);
+                                  Navigator.of(context)
+                                      .pushReplacementNamed('/home-student');
+                                } else if (holder.role == 'UNIVERSITY_USER') {
+                                  Navigator.of(context)
+                                      .pushNamed('/details-course');
+                                }
                               },
                               child: Text('Sign in'),
                               style: ElevatedButton.styleFrom(

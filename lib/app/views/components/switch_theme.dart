@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:schooltech/app/controller/app_controller.dart';
+import 'package:schooltech/app/controllers/app_controller.dart';
 
 class SwitchThemeButton extends StatelessWidget {
   const SwitchThemeButton({super.key});

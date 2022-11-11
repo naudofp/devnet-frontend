@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:schooltech/app/components/card_home_student.dart';
-import 'package:schooltech/app/controller/app_controller.dart';
-import 'package:schooltech/app/view/student/home_student.dart';
+import 'package:schooltech/app/controllers/student_controller.dart';
+import 'package:schooltech/app/models/student/student_home.dart';
+import 'package:schooltech/app/views/components/card_home_student.dart';
+import 'package:schooltech/app/controllers/app_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePageStudentView extends StatelessWidget {
-  const HomePageStudentView({super.key});
+  HomePageStudentView({super.key}) {}
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +44,34 @@ class HomePageStudentView extends StatelessWidget {
   }
 }
 
-class CardScore extends StatelessWidget {
-  const CardScore({super.key});
+class CardScore extends StatefulWidget {
+  CardScore({super.key});
+
+  @override
+  State<CardScore> createState() => _CardScoreState();
+}
+
+class _CardScoreState extends State<CardScore> {
+  int? idUser;
+  final controller = StudentController();
+  StudentHomeModel student = StudentHomeModel();
+
+  @override
+  void initState() {
+    super.initState();
+    getStudentHome();
+  }
+
+  Future getStudentHome() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    if (prefs.getInt('idUser') != null) {
+      idUser = prefs.getInt("idUser");
+      await controller.getStudentHome(idUser);
+      student = controller.studentHome;
+      setState(() {});
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +91,7 @@ class CardScore extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Fellipe Naudo',
+                  student.name ?? '',
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
@@ -74,7 +102,7 @@ class CardScore extends StatelessWidget {
                         TextStyle(fontSize: 29, fontWeight: FontWeight.w400)),
               ],
             ),
-            Text('150',
+            Text(student.score.toString(),
                 style: TextStyle(
                     fontSize: 70,
                     fontWeight: FontWeight.bold,

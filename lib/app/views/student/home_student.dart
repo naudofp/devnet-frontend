@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:schooltech/app/components/switch_theme.dart';
-import 'package:schooltech/app/view/core/your_courses_view.dart';
-import 'package:schooltech/app/view/student/home_page_view.dart';
-import 'package:schooltech/app/view/student/universityStudent/your_university_view.dart';
+import 'package:schooltech/app/views/components/switch_theme.dart';
+import 'package:schooltech/app/views/core/your_courses_view.dart';
+import 'package:schooltech/app/views/student/home_page_view.dart';
+import 'package:schooltech/app/views/student/universityStudent/your_university_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeStudent extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class HomeStudent extends StatefulWidget {
 class HomeStudentState extends State<HomeStudent> {
   static HomeStudent instance = HomeStudent();
   int currentOption = 1;
+  int? idUser;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +77,9 @@ class MenuBurguer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.logout_sharp),
             title: Text('Logout'),
-            onTap: () {
+            onTap: () async {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.clear();
               Navigator.of(context).pushReplacementNamed('/');
             },
           ),

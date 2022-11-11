@@ -3,7 +3,9 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class YourUniversity extends StatelessWidget {
-  const YourUniversity({super.key});
+  final int? idUser;
+
+  const YourUniversity({super.key, this.idUser});
 
   @override
   Widget build(BuildContext context) {
