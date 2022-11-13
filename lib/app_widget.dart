@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:schooltech/app/views/core/course_details_view.dart';
+import 'package:schooltech/app/views/login/welcome_page.dart';
 import 'package:schooltech/app/views/student/search/search_course_view.dart';
 import 'package:schooltech/app/views/student/search/search_universitys_view.dart';
 import 'package:schooltech/app/controllers/app_controller.dart';
@@ -22,7 +23,8 @@ class AppWidget extends StatelessWidget {
                 : Brightness.light,
           ),
           routes: {
-            '/': (context) => LoginPage(),
+            '/': (context) => WelcomePage(),
+            '/login': (context) => LoginPage(),
             '/home-student': (context) => HomeStudent(),
             '/search-univeristys': (context) => SearchUniversity(),
             '/search-courses': (context) => SearchCourse(),

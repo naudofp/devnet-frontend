@@ -111,6 +111,7 @@ class LoginState extends State<LoginPage> {
                               },
                               child: Text('Sign in'),
                               style: ElevatedButton.styleFrom(
+                                
                                   backgroundColor:
                                       Color.fromARGB(255, 0, 177, 136),
                                   minimumSize: Size(510, 55),
@@ -137,6 +138,10 @@ class LoginState extends State<LoginPage> {
                               width: 510,
                               height: 47,
                               borderRadius: 15,
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushReplacementNamed('/home-student');
+                              },
                             ),
                             SizedBox(
                               height: 15,

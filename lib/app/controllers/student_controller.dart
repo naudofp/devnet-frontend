@@ -1,3 +1,4 @@
+import 'package:schooltech/app/models/course/course_card_model.dart';
 import 'package:schooltech/app/models/student/student_home.dart';
 import 'package:schooltech/app/services/student_service.dart';
 
@@ -12,6 +13,17 @@ class StudentController {
     try {
       studentHome = await service.getStudentHome(id);
       state = StudentState.SUCCESS;
+    } catch (e) {
+      state = StudentState.ERROR;
+    }
+  }
+
+  List<CourseCardModel> studentWithCourses = [];
+  Future getStudentWithCourses(int? id) async {
+    state = StudentState.LOADING;
+
+    try {
+      studentWithCourses = await service.getStudentWithCourses(id);
     } catch (e) {
       state = StudentState.ERROR;
     }

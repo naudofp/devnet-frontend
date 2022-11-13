@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class UserHolder {
   int? id;
   String? role;

@@ -12,31 +12,33 @@ class HomePageStudentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding:
-              const EdgeInsets.only(top: 50, left: 25, right: 25, bottom: 30),
-          child: Column(
-            children: [
-              Container(
-                  alignment: Alignment.topCenter,
-                  child: Image.asset(
-                    'assets/images/avatar_male.png',
-                    width: 200,
-                    height: 200,
-                  )),
-              SizedBox(
-                height: 30,
-              ),
-              CardScore(),
-              CardHomeStudent(
-                text: 'Search \n Universitys',
-                route: '/search-univeristys',
-              ),
-              CardHomeStudent(
-                text: 'Search \n Courses',
-                route: '/search-courses',
-              ),
-            ],
+        child: Container(
+          child: Padding(
+            padding:
+                const EdgeInsets.only(top: 50, left: 25, right: 25, bottom: 30),
+            child: Column(
+              children: [
+                Container(
+                    alignment: Alignment.topCenter,
+                    child: Image.asset(
+                      'assets/images/avatar_male.png',
+                      width: 200,
+                      height: 200,
+                    )),
+                SizedBox(
+                  height: 30,
+                ),
+                CardScore(),
+                CardHomeStudent(
+                  text: 'Search \n Universitys',
+                  route: '/search-univeristys',
+                ),
+                CardHomeStudent(
+                  text: 'Search \n Courses',
+                  route: '/search-courses',
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -104,7 +106,7 @@ class _CardScoreState extends State<CardScore> {
             ),
             Text(student.score.toString(),
                 style: TextStyle(
-                    fontSize: 70,
+                    fontSize: 50,
                     fontWeight: FontWeight.bold,
                     color: AppController.instance.isDark
                         ? Color.fromARGB(255, 49, 255, 56)

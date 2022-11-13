@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:schooltech/app/models/course/course_card_model.dart';
 import 'package:schooltech/app/models/student/student_home.dart';
 
 class StudentService {
@@ -12,5 +13,14 @@ class StudentService {
     StudentHomeModel data = StudentHomeModel.fromJson(response.data);
 
     return data;
+  }
+
+  //  GET  STUDENT-WITH-COURSES   //
+  Future<List<CourseCardModel>> getStudentWithCourses(int? id) async {
+    String url = baseUrl + 'courses/' + id.toString();
+    Response response = await dio.get(url);
+
+    final courses = response.data as List;
+    return courses.map((json) => CourseCardModel.fromJson(json)).toList();
   }
 }
