@@ -7,25 +7,30 @@ class StudentController {
   StudentState state = StudentState.START;
 
   StudentHomeModel studentHome = StudentHomeModel();
-  Future getStudentHome(int? id) async {
+  Future<StudentHomeModel> getStudentHome(int? id) async {
     state = StudentState.LOADING;
 
     try {
-      studentHome = await service.getStudentHome(id);
       state = StudentState.SUCCESS;
+      studentHome = await service.getStudentHome(id);
     } catch (e) {
       state = StudentState.ERROR;
+    } finally {
+      return studentHome;
     }
   }
 
   List<CourseCardModel> studentWithCourses = [];
-  Future getStudentWithCourses(int? id) async {
+  Future<List<CourseCardModel>> getStudentWithCourses(int? id) async {
     state = StudentState.LOADING;
 
     try {
       studentWithCourses = await service.getStudentWithCourses(id);
+      state = StudentState.SUCCESS;
     } catch (e) {
       state = StudentState.ERROR;
+    } finally {
+      return studentWithCourses;
     }
   }
 }
