@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:custom_signin_buttons/button_list.dart';
 import 'package:flutter/material.dart';
+import 'package:schooltech/app/controllers/app_controller.dart';
 
 class CardHomeStudent extends StatelessWidget {
   final String text;
@@ -19,7 +20,9 @@ class CardHomeStudent extends StatelessWidget {
             Navigator.of(context).pushNamed(route);
           },
           style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromARGB(255, 65, 145, 126),
+              backgroundColor: AppController.instance.isDark
+                  ? Color.fromARGB(255, 117, 117, 117)
+                  : const Color.fromARGB(255, 0, 177, 136),
               fixedSize: Size(600, 150),
               textStyle: const TextStyle(
                 fontSize: 35,
