@@ -72,7 +72,7 @@ class __WelcomePageState extends State<WelcomePage>
             Text(
               'SCHOOLTECH',
               style: TextStyle(
-                  fontFamily: 'Roboto', fontSize: 25, color: Colors.white),
+                  fontFamily: 'Sono', fontSize: 25, color: Colors.white),
             ),
             SizedBox(height: 150),
             ElevatedButton(

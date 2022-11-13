@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schooltech/app/controllers/app_controller.dart';
 import 'package:schooltech/app/views/components/card_outline_border.dart';
 import 'package:schooltech/app/views/components/switch_theme.dart';
 
@@ -14,7 +15,9 @@ class _SearchUniversityState extends State<SearchUniversity> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 0, 177, 136),
+        backgroundColor: AppController.instance.isDark
+            ? Colors.black87
+            : const Color.fromARGB(255, 0, 177, 136),
         title: const Text(
           'Search Universitys',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
@@ -52,6 +55,7 @@ class _SearchUniversityState extends State<SearchUniversity> {
                 sizeTitle: 20,
                 sizeSubtitle: 18,
                 route: "",
+                idParam: 1,
               )
             ],
           )),

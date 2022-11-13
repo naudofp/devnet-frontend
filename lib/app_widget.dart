@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:schooltech/app/views/core/course_details_view.dart';
 import 'package:schooltech/app/views/login/welcome_page.dart';

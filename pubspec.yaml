@@ -10,12 +10,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
   custom_signin_buttons: ^1.0.2
   flutter_svg: ^1.1.6
   http: ^0.13.5
   shared_preferences: ^2.0.15
   dio: ^4.0.6
+  quickalert: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -27,3 +27,9 @@ flutter:
   assets:
    - assets/images/avatar_male.png
    - assets/images/background_login.jpg
+
+fonts:
+  - family: Sono
+    fonts:
+      - asset: assets/images/fonts/Sono.ttf
+

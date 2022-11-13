@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schooltech/app/controllers/app_controller.dart';
 import 'package:schooltech/app/views/components/switch_theme.dart';
 import 'package:schooltech/app/views/core/your_courses_view.dart';
 import 'package:schooltech/app/views/student/home_page_view.dart';
@@ -38,7 +39,9 @@ class HomeStudentState extends State<HomeStudent> {
         ),
         drawer: MenuBurguer(),
         appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 0, 177, 136),
+          backgroundColor: AppController.instance.isDark
+              ? Colors.black87
+              : const Color.fromARGB(255, 0, 177, 136),
           title: const Text(
             'SchoolTech',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),

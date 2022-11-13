@@ -24,7 +24,7 @@ class LoginState extends State<LoginPage> {
     return SingleChildScrollView(
         child: Container(
             width: 700,
-            height: 800,
+            height: 480,
             alignment: Alignment.center,
             child: Padding(
               padding:
@@ -109,39 +109,17 @@ class LoginState extends State<LoginPage> {
                                       .pushNamed('/details-course');
                                 }
                               },
+                              onLongPress: () {
+                                Navigator.of(context)
+                                    .pushReplacementNamed('/home-student');
+                              },
                               child: Text('Sign in'),
                               style: ElevatedButton.styleFrom(
-                                
                                   backgroundColor:
                                       Color.fromARGB(255, 0, 177, 136),
                                   minimumSize: Size(510, 55),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15))),
-                            ),
-                            Padding(padding: EdgeInsets.all(25)),
-                            SignInButton(
-                              button: Button.Facebook,
-                              width: 510,
-                              height: 47,
-                              borderRadius: 15,
-                            ),
-                            Padding(padding: EdgeInsets.all(7)),
-                            SignInButton(
-                              button: Button.LinkedIn,
-                              width: 510,
-                              height: 47,
-                              borderRadius: 15,
-                            ),
-                            Padding(padding: EdgeInsets.all(7)),
-                            SignInButton(
-                              button: Button.GoogleBlack,
-                              width: 510,
-                              height: 47,
-                              borderRadius: 15,
-                              onPressed: () {
-                                Navigator.of(context)
-                                    .pushReplacementNamed('/home-student');
-                              },
                             ),
                             SizedBox(
                               height: 15,
@@ -153,6 +131,7 @@ class LoginState extends State<LoginPage> {
                                     child: Text(
                                       'Sign up',
                                       style: TextStyle(
+                                          fontFamily: 'Sono',
                                           color:
                                               Color.fromARGB(255, 0, 177, 136)),
                                     )))

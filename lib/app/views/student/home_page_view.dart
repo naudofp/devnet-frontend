@@ -3,6 +3,7 @@ import 'package:schooltech/app/controllers/student_controller.dart';
 import 'package:schooltech/app/models/student/student_home.dart';
 import 'package:schooltech/app/views/components/card_home_student.dart';
 import 'package:schooltech/app/controllers/app_controller.dart';
+import 'package:schooltech/app/views/components/loading_component.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePageStudentView extends StatelessWidget {
@@ -81,39 +82,44 @@ class _CardScoreState extends State<CardScore> {
       width: 600,
       height: 125,
       decoration: BoxDecoration(
-          border:
-              Border.all(color: Color.fromARGB(255, 0, 177, 136), width: 10)),
+          border: Border.all(
+              color: AppController.instance.isDark
+                  ? Color.fromARGB(255, 117, 117, 117)
+                  : const Color.fromARGB(255, 0, 177, 136),
+              width: 7)),
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  student.name ?? '',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text('Score: ',
-                    style:
-                        TextStyle(fontSize: 29, fontWeight: FontWeight.w400)),
-              ],
-            ),
-            Text(student.score.toString(),
-                style: TextStyle(
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                    color: AppController.instance.isDark
-                        ? Color.fromARGB(255, 49, 255, 56)
-                        : Color.fromARGB(255, 1, 157, 6))),
-          ],
-        ),
-      ),
+          padding: const EdgeInsets.all(10.0),
+          child: student.name == null
+              ? LoadingComponent()
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          student.name ?? '',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text('Score: ',
+                            style: TextStyle(
+                                fontSize: 29, fontWeight: FontWeight.w400)),
+                      ],
+                    ),
+                    Text(student.score.toString(),
+                        style: TextStyle(
+                            fontSize: 50,
+                            fontWeight: FontWeight.bold,
+                            color: AppController.instance.isDark
+                                ? Color.fromARGB(255, 49, 255, 56)
+                                : Color.fromARGB(255, 1, 157, 6))),
+                  ],
+                )),
     );
   }
 }
