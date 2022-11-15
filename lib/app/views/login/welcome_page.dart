@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quickalert/quickalert.dart';
+import 'package:schooltech/app/controllers/app_controller.dart';
+import 'package:schooltech/app/views/components/alert_register.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -42,7 +45,6 @@ class __WelcomePageState extends State<WelcomePage>
     animationController.addListener(() {
       setState(() {});
     });
-
     animationController.forward();
   }
 
@@ -59,49 +61,60 @@ class __WelcomePageState extends State<WelcomePage>
   }
 
   Widget _body() {
-    return Container(
-      child: Center(
+    return Center(
+      child: Container(
+        width: 250,
+        height: 470,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(height: 220),
-            Icon(
-              Icons.school_rounded,
-              size: 200,
-              color: Colors.white,
+            Column(
+              children: [
+                Icon(
+                  Icons.school_rounded,
+                  size: 200,
+                  color: Colors.white,
+                ),
+                Text(
+                  'SCHOOLTECH',
+                  style: TextStyle(
+                      fontFamily: 'Sono', fontSize: 25, color: Colors.white),
+                ),
+              ],
             ),
-            Text(
-              'SCHOOLTECH',
-              style: TextStyle(
-                  fontFamily: 'Sono', fontSize: 25, color: Colors.white),
+            Column(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed('/login');
+                  },
+                  child: Text(
+                    'Login',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 0, 177, 136),
+                      fixedSize: Size(220, 55),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(22))),
+                ),
+                SizedBox(height: 25),
+                ElevatedButton(
+                  onPressed: () {
+                    alertRegister(context);
+                  },
+                  child: Text(
+                    'Register',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 0, 177, 136),
+                      fixedSize: Size(220, 55),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(22))),
+                )
+              ],
             ),
-            SizedBox(height: 150),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushReplacementNamed('/login');
-              },
-              child: Text(
-                'Login',
-                style: TextStyle(fontSize: 20),
-              ),
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 0, 177, 136),
-                  fixedSize: Size(220, 55),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(22))),
-            ),
-            SizedBox(height: 25),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                'Register',
-                style: TextStyle(fontSize: 20),
-              ),
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 0, 177, 136),
-                  fixedSize: Size(220, 55),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(22))),
-            )
           ],
         ),
       ),
@@ -127,5 +140,23 @@ class __WelcomePageState extends State<WelcomePage>
         _body(),
       ],
     ));
+  }
+}
+
+class DialogUser extends StatelessWidget {
+  const DialogUser({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: SizedBox(
+        width: 500,
+        height: 700,
+        child: AlertDialog(
+          content: Container(),
+          backgroundColor: Colors.white,
+        ),
+      ),
+    );
   }
 }

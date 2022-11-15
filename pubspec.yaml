@@ -27,6 +27,7 @@ flutter:
   assets:
    - assets/images/avatar_male.png
    - assets/images/background_login.jpg
+   - assets/images/example.gif
 
 fonts:
   - family: Sono

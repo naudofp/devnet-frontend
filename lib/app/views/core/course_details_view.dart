@@ -78,7 +78,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                       ),
                       Padding(padding: EdgeInsets.only(top: 60)),
                       Container(
-                        width: MediaQuery.of(context).size.width,
+                        width: 500,
                         height: 500,
                         child: Column(
                           children: [

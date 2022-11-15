@@ -37,7 +37,7 @@ class HomeStudentState extends State<HomeStudent> {
                 icon: Icon(Icons.book), label: 'Your Courses'),
           ],
         ),
-        drawer: MenuBurguer(),
+        drawer: _menuBurguer(),
         appBar: AppBar(
           backgroundColor: AppController.instance.isDark
               ? Colors.black87
@@ -53,13 +53,8 @@ class HomeStudentState extends State<HomeStudent> {
           children: [YourUniversity(), HomePageStudentView(), YourCourses()],
         ));
   }
-}
 
-class MenuBurguer extends StatelessWidget {
-  const MenuBurguer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _menuBurguer() {
     return Drawer(
       child: Column(
         children: [

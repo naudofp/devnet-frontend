@@ -4,6 +4,7 @@ import 'package:schooltech/app/controllers/app_controller.dart';
 import 'package:schooltech/app/controllers/user_controller.dart';
 import 'package:schooltech/app/models/user/UserLogin.dart';
 import 'package:schooltech/app/models/user/user_holder.dart';
+import 'package:schooltech/app/views/components/alert_register.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -127,7 +128,9 @@ class LoginState extends State<LoginPage> {
                             Container(
                                 alignment: Alignment.bottomCenter,
                                 child: TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      alertRegister(context);
+                                    },
                                     child: Text(
                                       'Sign up',
                                       style: TextStyle(
