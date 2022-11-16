@@ -1,9 +1,13 @@
-# Welcome To SchoolTech
+# SchoolTech
+[![NPM](https://img.shields.io/npm/1/react)]()
 
-##
+## Sobre o Projeto
+
 Inicialmente a ideia de desenvolver esse projeto foi quando iniciei meus estudos com Flutter
 Então para somar em meu portifólio decide criar esse Projeto, um tanto quanto simples, mas aonde consegui 
 absorver e aprender muitas coisas.
+
+## Funcionalidades
 
 O Sistema consiste em uma plataforma em que o estudante pode reunir seus cursos e conhecimentos,
 assim então elevando o seu 'Score', o Score é uma quantia de pontos que cada curso possue, quanto mais cursos o 
@@ -12,11 +16,29 @@ estudante possuir, mais auto será seu Score.
 É permitido também que Universidades, Escolas, ou Plataformas de cursos criem suas contas, e criem seus 
 cursos, até mesmo uma Universidade possuir seus alunos.
 
-Deselvolvi uma api em Java com Spring-Boot para o BackEnd e um gerenciador de Banco de Dados MySQL.
-Utilizei Dart juntamente com a ferramente Flutter para o FrontEnd.
+# Tecnologias Utilizadas
+## Back End
+
+- Java
+- Spring Boot
+- JPA / Hibernate
+- Maven
+
+## Front End
+
+- Dart
+- Flutter
+
+## Layout - SchoolTech;
 
 
-Fotos do respectivo Projeto - SchoolTech;
+![welcome](https://user-images.githubusercontent.com/106287877/202284493-4eafe8b1-c1c6-4d2a-81a1-49b4ad3e8a3e.png)
+![login](https://user-images.githubusercontent.com/106287877/202284541-c970b423-8837-47e2-a49a-86247e05bb57.png)
 
-![login](https://user-images.githubusercontent.com/106287877/202275985-c80aba7f-6890-4abb-a233-26d1e801c3ea.png)
-![welcome](https://user-images.githubusercontent.com/106287877/202276184-e1bec770-cb98-462c-9392-488bdd9f2769.png)
+
+![home-student](https://user-images.githubusercontent.com/106287877/202284577-9596af27-89c6-43b1-8da9-514556d081b9.png)
+![dark](https://user-images.githubusercontent.com/106287877/202284606-e6879727-dea7-4238-aeb5-c42927b07148.png)
+
+![course-details](https://user-images.githubusercontent.com/106287877/202284637-a2631c85-108a-4ad9-84a1-ebbbdeaf2153.png)
+![register](https://user-images.githubusercontent.com/106287877/202284960-797224ef-711e-4bab-800e-225f9c21afeb.png)
+
