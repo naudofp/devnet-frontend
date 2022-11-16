@@ -1,20 +1,20 @@
 # SchoolTech
-[![NPM](https://img.shields.io/npm/1/react)]()
+[![NPM](https://img.shields.io/badge/license-MIT-green)](https://github.com/naudofp/schooltech-frontend/blob/main/LICENSE)
 
 ## Sobre o Projeto
 
-Inicialmente a ideia de desenvolver esse projeto foi quando iniciei meus estudos com Flutter
-Então para somar em meu portifólio decide criar esse Projeto, um tanto quanto simples, mas aonde consegui 
+Inicialmente a ideia de desenvolver esse projeto foi quando iniciei meus estudos com Flutter e precisava de algo para por em prática. 
+Então para somar em meu portifólio, resolvi criar esse Projeto, um tanto quanto simples, mas aonde consegui 
 absorver e aprender muitas coisas.
 
 ## Funcionalidades
 
 O Sistema consiste em uma plataforma em que o estudante pode reunir seus cursos e conhecimentos,
 assim então elevando o seu 'Score', o Score é uma quantia de pontos que cada curso possue, quanto mais cursos o 
-estudante possuir, mais auto será seu Score.
+estudante possuir, mais auto será o seu Score.
 
-É permitido também que Universidades, Escolas, ou Plataformas de cursos criem suas contas, e criem seus 
-cursos, até mesmo uma Universidade possuir seus alunos.
+É permitido também que Universidades, Escolas ou Plataformas de Ensino, criem suas contas, e seus 
+cursos, até mesmo uma Universidade adicionar seus alunos.
 
 # Tecnologias Utilizadas
 ## Back End
@@ -29,8 +29,7 @@ cursos, até mesmo uma Universidade possuir seus alunos.
 - Dart
 - Flutter
 
-## Layout - SchoolTech;
-
+# Layout - SchoolTech;
 
 ![welcome](https://user-images.githubusercontent.com/106287877/202284493-4eafe8b1-c1c6-4d2a-81a1-49b4ad3e8a3e.png)
 ![login](https://user-images.githubusercontent.com/106287877/202284541-c970b423-8837-47e2-a49a-86247e05bb57.png)
