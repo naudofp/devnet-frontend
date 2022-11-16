@@ -16,6 +16,11 @@ estudante possuir, mais auto será o seu Score.
 É permitido também que Universidades, Escolas ou Plataformas de Ensino, criem suas contas, e seus 
 cursos, até mesmo uma Universidade adicionar seus alunos.
 
+### Modelo Conceitual
+
+![modelo=conceitual](https://user-images.githubusercontent.com/106287877/202287729-ecf6ec19-4f10-4a6c-a127-3d240e50857f.png)
+
+
 # Tecnologias Utilizadas
 ## Back End
 
