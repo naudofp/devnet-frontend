@@ -1,16 +1,19 @@
-# schooltech
+# Welcome To SchoolTech
 
-A new Flutter project.
+Inicialmente a ideia de desenvolver esse projeto foi quando iniciei meus estudos com Flutter
+Então para somar em meu portifólio decide criar esse Projeto, um tanto quanto simples, mas aonde consegui 
+absorver e aprender muitas coisas.
 
-## Getting Started
+O Sistema consiste em uma plataforma em que o estudante pode reunir seus cursos e conhecimentos,
+assim então elevando o seu 'Score', o Score é uma quantia de pontos que cada curso possue, quanto mais cursos o 
+estudante possuir, mais auto será seu Score.
 
-This project is a starting point for a Flutter application.
+É permitido também que Universidades, Escolas, ou Plataformas de cursos criem suas contas, e criem seus 
+cursos, até mesmo uma Universidade possuir seus alunos.
 
-A few resources to get you started if this is your first Flutter project:
+Deselvolvi uma api em Java com Spring-Boot para o BackEnd e um gerenciador de Banco de Dados MySQL.
+Utilizei Dart juntamente com a ferramente Flutter para o FrontEnd.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Fotos do respectivo Projeto - SchoolTech;
+
