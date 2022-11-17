@@ -3,8 +3,8 @@ import 'package:schooltech/app/views/core/course_details_view.dart';
 import 'package:schooltech/app/views/login/welcome_page.dart';
 import 'package:schooltech/app/views/register/register_student.dart';
 import 'package:schooltech/app/views/register/register_university.dart';
-import 'package:schooltech/app/views/student/search/search_course_view.dart';
-import 'package:schooltech/app/views/student/search/search_universitys_view.dart';
+import 'package:schooltech/app/views/core/search/search_course_view.dart';
+import 'package:schooltech/app/views/core/search/search_universitys_view.dart';
 import 'package:schooltech/app/controllers/app_controller.dart';
 import 'package:schooltech/app/views/login/login_page.dart';
 import 'package:schooltech/app/views/student/home_student.dart';
@@ -28,8 +28,6 @@ class AppWidget extends StatelessWidget {
             '/new-student': (context) => RegisterStudent(),
             '/new-university': (context) => RegisterUniversity(),
             '/home-student': (context) => HomeStudent(),
-            '/search-univeristys': (context) => SearchUniversity(),
-            '/search-courses': (context) => SearchCourse(),
             '/details-course': (context) => CourseDetails(),
           },
         );

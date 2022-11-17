@@ -1,10 +1,13 @@
 import 'package:custom_signin_buttons/custom_signin_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:schooltech/app/controllers/app_controller.dart';
 import 'package:schooltech/app/controllers/user_controller.dart';
 import 'package:schooltech/app/models/user/UserLogin.dart';
 import 'package:schooltech/app/models/user/user_holder.dart';
+import 'package:schooltech/app/views/components/alert_error.dart';
 import 'package:schooltech/app/views/components/alert_register.dart';
+import 'package:schooltech/app/views/components/loading_component.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -99,15 +102,28 @@ class LoginState extends State<LoginPage> {
                             ElevatedButton(
                               onPressed: () async {
                                 await controller.login(userLogin);
-                                UserHolder holder = controller.holder;
 
-                                if (holder.role == 'STUDENT_USER') {
-                                  controller.setHolder(holder);
-                                  Navigator.of(context)
-                                      .pushReplacementNamed('/home-student');
-                                } else if (holder.role == 'UNIVERSITY_USER') {
-                                  Navigator.of(context)
-                                      .pushNamed('/details-course');
+                                if (controller.state == UserState.LOADING) {
+                                  LoadingComponent();
+                                } else if (controller.state ==
+                                    UserState.ERROR) {
+                                  QuickAlert.show(
+                                      context: context,
+                                      type: QuickAlertType.error,
+                                      title: 'Something be wrong',
+                                      confirmBtnText: 'Try Again',
+                                      confirmBtnColor: Colors.grey);
+                                } else {
+                                  UserHolder holder = controller.holder;
+
+                                  if (holder.role == 'STUDENT_USER') {
+                                    controller.setHolder(holder);
+                                    Navigator.of(context)
+                                        .pushReplacementNamed('/home-student');
+                                  } else if (holder.role == 'UNIVERSITY_USER') {
+                                    Navigator.of(context)
+                                        .pushNamed('/details-course');
+                                  }
                                 }
                               },
                               onLongPress: () {

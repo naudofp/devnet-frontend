@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:schooltech/app/controllers/app_controller.dart';
+import 'package:schooltech/app/controllers/student_controller.dart';
+import 'package:schooltech/app/controllers/user_controller.dart';
+import 'package:schooltech/app/models/student/student_register.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterStudent extends StatefulWidget {
   const RegisterStudent({super.key});
@@ -10,6 +16,10 @@ class RegisterStudent extends StatefulWidget {
 
 class _RegisterStudentState extends State<RegisterStudent> {
   var currentStep = 0;
+  String? errorText = '';
+
+  StudentController controller = StudentController();
+  UserController userController = UserController();
 
   final postName = TextEditingController();
   final postEmail = TextEditingController();
@@ -75,12 +85,36 @@ class _RegisterStudentState extends State<RegisterStudent> {
             type: StepperType.horizontal,
             steps: _steps(),
             currentStep: currentStep,
-            onStepContinue: () {
+            onStepContinue: () async {
               if (currentStep == 2) {
-                print('register');
-              } else {
+                var student = StudentRegisterModel(
+                    name: postName.text,
+                    email: postEmail.text,
+                    city: postCity.text,
+                    country: postCountry.text,
+                    number: postNumber.text.isEmpty
+                        ? null
+                        : int.parse(postNumber.text),
+                    password: postPassword.text,
+                    state: postState.text,
+                    street: postStreet.text);
+
+                await controller.postStudent(student);
+
+                if (controller.state == StudentState.SUCCESS) {
+                  Navigator.of(context).pushNamed('/login');
+                  QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.success,
+                      title: 'Congratulations');
+                } else if (controller.state == StudentState.ERROR) {
+                  QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.error,
+                      title: 'Something be wrong');
+                }
+              } else
                 setState(() => currentStep += 1);
-              }
             },
             onStepCancel: currentStep == 0
                 ? null
@@ -126,7 +160,7 @@ class _RegisterStudentState extends State<RegisterStudent> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Hello, Let's start!!",
+                    "Let's Start,\nStep 1 - Account",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.black,
@@ -135,7 +169,7 @@ class _RegisterStudentState extends State<RegisterStudent> {
                   ),
                   SizedBox(height: 25),
                   SizedBox(
-                    height: 120,
+                    height: 130,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -186,7 +220,7 @@ class _RegisterStudentState extends State<RegisterStudent> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Address",
+                    "Step 2 - Address",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 18,
@@ -196,7 +230,7 @@ class _RegisterStudentState extends State<RegisterStudent> {
                   ),
                   SizedBox(height: 25),
                   SizedBox(
-                    height: 300,
+                    height: 330,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -246,7 +280,11 @@ class _RegisterStudentState extends State<RegisterStudent> {
                                     borderRadius: BorderRadius.circular(15)))),
                         TextField(
                             controller: postNumber,
+                            onChanged: (value) => setState(() => value),
                             keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
                             decoration: InputDecoration(
                                 labelText: 'Number',
                                 labelStyle: TextStyle(
@@ -272,13 +310,13 @@ class _RegisterStudentState extends State<RegisterStudent> {
           padding: const EdgeInsets.only(bottom: 30, top: 20),
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: 380,
+            height: 350,
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Hello, Let's start!!",
+                    "Step 3 - Password",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 18,
@@ -288,13 +326,16 @@ class _RegisterStudentState extends State<RegisterStudent> {
                   ),
                   SizedBox(height: 25),
                   SizedBox(
-                    height: 120,
+                    height: 170,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         TextField(
                             controller: postPassword,
                             obscureText: true,
+                            onChanged: (value) => setState(() {
+                                  errorText = _errorText(value);
+                                }),
                             keyboardType: TextInputType.visiblePassword,
                             decoration: InputDecoration(
                                 prefixIcon: Icon(Icons.lock_outline),
@@ -307,9 +348,13 @@ class _RegisterStudentState extends State<RegisterStudent> {
                         TextField(
                             obscureText: true,
                             keyboardType: TextInputType.visiblePassword,
+                            onChanged: (value) => setState(() {
+                                  errorText = _errorText(value);
+                                }),
                             decoration: InputDecoration(
                                 prefixIcon: Icon(Icons.lock_outline),
                                 labelText: 'Confirm Password',
+                                errorText: errorText,
                                 labelStyle: TextStyle(
                                   color: Colors.black,
                                 ),
@@ -325,5 +370,14 @@ class _RegisterStudentState extends State<RegisterStudent> {
         ),
       ),
     ];
+  }
+
+  String? _errorText(String? value) {
+    final firstPassword = postPassword.text;
+
+    if (value != firstPassword) {
+      return 'Invalid';
+    }
+    return null;
   }
 }

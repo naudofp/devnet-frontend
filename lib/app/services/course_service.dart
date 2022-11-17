@@ -14,4 +14,22 @@ class CourseService {
 
     return data;
   }
+
+  //  GET  COURSES  //
+  Future<List<CourseCardModel>> getAllCourses() async {
+    String url = baseUrl;
+    Response response = await dio.get(url);
+    final data = response.data as List;
+
+    return data.map((course) => CourseCardModel.fromJson(course)).toList();
+  }
+
+  //  GET  COURSES-BY-NAME  //
+  Future<List<CourseCardModel>> getCourseByName(query) async {
+    String url = baseUrl + 'name/' + query;
+    Response response = await dio.get(url);
+    final data = response.data as List;
+
+    return data.map((course) => CourseCardModel.fromJson(course)).toList();
+  }
 }

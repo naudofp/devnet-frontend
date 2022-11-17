@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quickalert/quickalert.dart';
 import 'package:schooltech/app/controllers/course_controller.dart';
 import 'package:schooltech/app/models/course/card_details_mode.dart';
 import 'package:schooltech/app/views/components/loading_component.dart';
 import 'package:schooltech/app/views/components/switch_theme.dart';
 import 'package:schooltech/app/controllers/app_controller.dart';
-import 'package:schooltech/app_widget.dart';
 
 class CourseDetails extends StatefulWidget {
   @override

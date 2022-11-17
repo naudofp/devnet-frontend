@@ -63,18 +63,24 @@ class HomeStudentState extends State<HomeStudent> {
               accountName: Text('Fellipe'),
               accountEmail: Text('felipenaudof@gmail.com')),
           ListTile(
-            leading: Icon(Icons.school),
-            title: Text('Your University'),
+            leading: Icon(Icons.person),
+            title: Text('Profile'),
             onTap: () {},
           ),
           ListTile(
-            leading: Icon(Icons.book),
-            title: Text('Your courses'),
+            leading: Icon(Icons.settings),
+            title: Text('Settings'),
             onTap: () {},
           ),
           ListTile(
-            leading: Icon(Icons.logout_sharp),
-            title: Text('Logout'),
+            leading: Icon(
+              Icons.logout_sharp,
+              color: Colors.red,
+            ),
+            title: Text(
+              'Logout',
+              style: TextStyle(color: Colors.red),
+            ),
             onTap: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.clear();
