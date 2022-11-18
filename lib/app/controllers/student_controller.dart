@@ -1,4 +1,5 @@
 import 'package:schooltech/app/models/course/course_card_model.dart';
+import 'package:schooltech/app/models/student/student_card.dart';
 import 'package:schooltech/app/models/student/student_home.dart';
 import 'package:schooltech/app/models/user/user_holder.dart';
 import 'package:schooltech/app/services/student_service.dart';
@@ -46,6 +47,20 @@ class StudentController {
       state = StudentState.ERROR;
     } finally {
       return studentWithCourses;
+    }
+  }
+
+  List<StudentCardModel> students = [];
+  Future<List<StudentCardModel>> getStudentByName(name) async {
+    state = StudentState.START;
+
+    try {
+      students = await service.getStudentByName(name);
+      state = StudentState.SUCCESS;
+    } catch (e) {
+      state = StudentState.ERROR;
+    } finally {
+      return students;
     }
   }
 }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:schooltech/app/controllers/app_controller.dart';
 import 'package:schooltech/app/views/components/switch_theme.dart';
-import 'package:schooltech/app/views/core/your_courses_view.dart';
+import 'package:schooltech/app/views/student/courses/your_courses_view.dart';
 import 'package:schooltech/app/views/student/home_page_view.dart';
-import 'package:schooltech/app/views/student/universityStudent/your_university_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeStudent extends StatefulWidget {
@@ -31,7 +30,7 @@ class HomeStudentState extends State<HomeStudent> {
           },
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.school), label: 'Your University'),
+                icon: Icon(Icons.group_add), label: 'Friends'),
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.book), label: 'Your Courses'),
@@ -50,7 +49,7 @@ class HomeStudentState extends State<HomeStudent> {
         ),
         body: IndexedStack(
           index: currentOption,
-          children: [YourUniversity(), HomePageStudentView(), YourCourses()],
+          children: [Container(), HomePageStudentView(), YourCourses()],
         ));
   }
 

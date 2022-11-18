@@ -5,7 +5,7 @@ import 'package:schooltech/app/views/components/card_home_student.dart';
 import 'package:schooltech/app/controllers/app_controller.dart';
 import 'package:schooltech/app/views/components/loading_component.dart';
 import 'package:schooltech/app/views/core/search/search_course_view.dart';
-import 'package:schooltech/app/views/core/search/search_universitys_view.dart';
+import 'package:schooltech/app/views/core/search/search_students_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePageStudentView extends StatelessWidget {
@@ -33,8 +33,8 @@ class HomePageStudentView extends StatelessWidget {
                 ),
                 CardScore(),
                 CardHomeStudent(
-                  text: 'Search \n Universitys',
-                  search: SearchUniversity(),
+                  text: 'Search \n Students',
+                  search: SearchStudents(),
                 ),
                 CardHomeStudent(
                   text: 'Search \n Courses',
@@ -50,7 +50,9 @@ class HomePageStudentView extends StatelessWidget {
 }
 
 class CardScore extends StatefulWidget {
-  CardScore({super.key});
+  int? idUser;
+
+  CardScore({super.key, this.idUser});
 
   @override
   State<CardScore> createState() => _CardScoreState();

@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:quickalert/quickalert.dart';
-import 'package:schooltech/app/controllers/app_controller.dart';
 import 'package:schooltech/app/controllers/student_controller.dart';
-import 'package:schooltech/app/models/course/course_card_model.dart';
 import 'package:schooltech/app/views/components/alert_error.dart';
 import 'package:schooltech/app/views/components/card_outline_border.dart';
 import 'package:schooltech/app/views/components/loading_component.dart';
