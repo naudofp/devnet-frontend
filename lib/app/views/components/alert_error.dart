@@ -7,24 +7,24 @@ class AlertErrorComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: 400,
         height: 200,
         child: AlertDialog(
           backgroundColor: Colors.red,
           content: Center(
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Icon(
+                  Icons.error,
+                  color: Colors.white,
+                ),
                 SizedBox(
-                  height: 40,
-                  width: 40,
-                  child: Icon(
-                    Icons.error,
-                    color: Colors.white,
-                  ),
+                  width: 5,
                 ),
                 Text(
                   'Ops, something be wrong',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontSize: 15),
                 )
               ],
             ),

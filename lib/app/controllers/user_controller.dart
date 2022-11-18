@@ -12,7 +12,6 @@ class UserController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.setInt('idUser', user.id as int);
-    prefs.setString('role', user.role as String);
   }
 
   Future login(UserLogin userlogin) async {

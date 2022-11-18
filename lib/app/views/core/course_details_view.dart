@@ -21,6 +21,12 @@ class _CourseDetailsState extends State<CourseDetails> {
     final idCourse = ModalRoute.of(context)!.settings.arguments as int?;
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
+          backgroundColor: AppController.instance.isDark
+              ? Colors.white
+              : const Color.fromARGB(255, 0, 177, 136)),
       appBar: AppBar(
         backgroundColor: AppController.instance.isDark
             ? Colors.black87
@@ -51,8 +57,6 @@ class _CourseDetailsState extends State<CourseDetails> {
                       SizedBox(
                         height: 5,
                       ),
-                      Text('${snapshot.data?.nameUniversity}',
-                          style: TextStyle(fontSize: 18)),
                       Padding(padding: EdgeInsets.only(top: 60)),
                       Container(
                         width: 200,
@@ -75,62 +79,6 @@ class _CourseDetailsState extends State<CourseDetails> {
                         )),
                       ),
                       Padding(padding: EdgeInsets.only(top: 60)),
-                      Container(
-                        width: 500,
-                        height: 500,
-                        child: Column(
-                          children: [
-                            Text(
-                              'Some Students',
-                              style: TextStyle(fontSize: 35),
-                            ),
-                            Padding(padding: EdgeInsets.only(top: 8)),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: 402,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    height: 60,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 15, right: 15),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Fellipe',
-                                            style: TextStyle(
-                                                fontSize: 17,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                          Text('Blumenau',
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  fontWeight: FontWeight.w500)),
-                                        ],
-                                      ),
-                                    ),
-                                    decoration: BoxDecoration(
-                                        color: AppController.instance.isDark
-                                            ? Colors.transparent
-                                            : Colors.white,
-                                        border: Border.all(
-                                          width: 3,
-                                          color: AppController.instance.isDark
-                                              ? Colors.white
-                                              : const Color.fromARGB(
-                                                  255, 0, 177, 136),
-                                        )),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
                     ],
                   );
                 } else if (controller.state == CourseState.ERROR) {

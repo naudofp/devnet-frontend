@@ -18,6 +18,15 @@ class StudentService {
     return data;
   }
 
+  // POST  STUDENT-ADD-COURSE  //
+  Future<String> addCourseOnStudent(idStudent, idCourse) async {
+    String url = baseUrl + '/add-course/' + idCourse + '/' + idStudent;
+    Response response = await dio.post(url);
+    String message = response.data;
+
+    return message;
+  }
+
   //  GET   STUDENT-HOME //
   Future<StudentHomeModel> getStudentHome(int? id) async {
     String url = baseUrl + id.toString();

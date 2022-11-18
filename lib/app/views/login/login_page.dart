@@ -5,7 +5,6 @@ import 'package:schooltech/app/controllers/app_controller.dart';
 import 'package:schooltech/app/controllers/user_controller.dart';
 import 'package:schooltech/app/models/user/UserLogin.dart';
 import 'package:schooltech/app/models/user/user_holder.dart';
-import 'package:schooltech/app/views/components/alert_error.dart';
 import 'package:schooltech/app/views/components/alert_register.dart';
 import 'package:schooltech/app/views/components/loading_component.dart';
 
@@ -116,14 +115,9 @@ class LoginState extends State<LoginPage> {
                                 } else {
                                   UserHolder holder = controller.holder;
 
-                                  if (holder.role == 'STUDENT_USER') {
-                                    controller.setHolder(holder);
-                                    Navigator.of(context)
-                                        .pushReplacementNamed('/home-student');
-                                  } else if (holder.role == 'UNIVERSITY_USER') {
-                                    Navigator.of(context)
-                                        .pushNamed('/details-course');
-                                  }
+                                  controller.setHolder(holder);
+                                  Navigator.of(context)
+                                      .pushReplacementNamed('/home-student');
                                 }
                               },
                               onLongPress: () {

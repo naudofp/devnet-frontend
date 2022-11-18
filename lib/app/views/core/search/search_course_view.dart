@@ -56,7 +56,7 @@ class SearchCourse extends SearchDelegate<String> {
                         arguments: snapshot.data![index].id),
                     child: CardOutlineBorder(
                       title: snapshot.data![index].nameCourse,
-                      subtitle: snapshot.data![index].nameUnversity,
+                      subtitle: snapshot.data![index].score.toString(),
                       sizeTitle: 20,
                       sizeSubtitle: 20,
                     ),
@@ -92,7 +92,7 @@ class SearchCourse extends SearchDelegate<String> {
                         arguments: snapshot.data![index].id),
                     child: CardOutlineBorder(
                       title: snapshot.data![index].nameCourse,
-                      subtitle: snapshot.data![index].nameUnversity,
+                      subtitle: snapshot.data![index].score.toString(),
                       sizeTitle: 20,
                       sizeSubtitle: 20,
                     ),
