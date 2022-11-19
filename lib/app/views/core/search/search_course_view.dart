@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schooltech/app/controllers/course_controller.dart';
+import 'package:schooltech/app/models/course/course_holder.dart';
 import 'package:schooltech/app/views/components/alert_error.dart';
 import 'package:schooltech/app/views/components/card_outline_border.dart';
 import 'package:schooltech/app/views/components/loading_component.dart';
@@ -53,7 +54,8 @@ class SearchCourse extends SearchDelegate<String> {
                   return InkWell(
                     onTap: () => Navigator.of(context).pushNamed(
                         '/details-course',
-                        arguments: snapshot.data![index].id),
+                        arguments:
+                            CourseHolder(snapshot.data![index].id, false)),
                     child: CardOutlineBorder(
                       title: snapshot.data![index].nameCourse,
                       subtitle: snapshot.data![index].score.toString(),
@@ -89,7 +91,8 @@ class SearchCourse extends SearchDelegate<String> {
                   return InkWell(
                     onTap: () => Navigator.of(context).pushNamed(
                         '/details-course',
-                        arguments: snapshot.data![index].id),
+                        arguments:
+                            CourseHolder(snapshot.data![index].id, false)),
                     child: CardOutlineBorder(
                       title: snapshot.data![index].nameCourse,
                       subtitle: snapshot.data![index].score.toString(),

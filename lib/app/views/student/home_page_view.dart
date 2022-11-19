@@ -33,12 +33,12 @@ class HomePageStudentView extends StatelessWidget {
                 ),
                 CardScore(),
                 CardHomeStudent(
-                  text: 'Search \n Students',
-                  search: SearchStudents(),
-                ),
-                CardHomeStudent(
                   text: 'Search \n Courses',
                   search: SearchCourse(),
+                ),
+                CardHomeStudent(
+                  text: 'Search \n Students',
+                  search: SearchStudents(),
                 ),
               ],
             ),

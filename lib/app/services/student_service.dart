@@ -1,8 +1,10 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
 import 'package:schooltech/app/models/course/course_card_model.dart';
 import 'package:schooltech/app/models/student/student_card.dart';
 import 'package:schooltech/app/models/student/student_home.dart';
-import 'package:schooltech/app/models/student/student_register.dart';
 import 'package:schooltech/app/models/user/user_holder.dart';
 
 class StudentService {
@@ -19,15 +21,28 @@ class StudentService {
   }
 
   // POST  STUDENT-ADD-COURSE  //
-  Future<String?> addCourseOnStudent(idStudent, idCourse) async {
-    String url = baseUrl + '/add-course/' + idCourse + '/' + idStudent;
-    Response response = await dio.post(url);
-    String message = response.data;
+  Future<Map?> addCourseOnStudent(idStudent, idCourse) async {
+    Uri url =
+        Uri.http('localhost:8080', '/student/add-course/$idCourse/$idStudent');
+    final response = await http.post(url);
 
-    if (response.statusCode == 200) {
-      return message;
-    } else {
-      return response.statusMessage;
+    if (response.statusCode == 201) {
+      return {"message": response.body, "status": response.statusCode};
+    } else if (response.statusCode == 500) {
+      return jsonDecode(response.body);
+    }
+  }
+
+  // DELETE  STUDENT-REMOVE-COURSE  //
+  Future<Map?> removeCourseOnStudent(idStudent, idCourse) async {
+    Uri url = Uri.http(
+        'localhost:8080', '/student/remove-course/$idCourse/$idStudent');
+    final response = await http.delete(url);
+
+    if (response.statusCode == 201) {
+      return {"message": response.body, "status": response.statusCode};
+    } else if (response.statusCode == 500) {
+      return jsonDecode(response.body);
     }
   }
 

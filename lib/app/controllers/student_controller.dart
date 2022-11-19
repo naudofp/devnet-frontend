@@ -22,17 +22,17 @@ class StudentController {
     }
   }
 
-  String? message;
-  Future<String?> addCourseOnStudent(idStudent, idCourse) async {
+  Map? message;
+  Future<Map?> addCourseOnStudent(idStudent, idCourse) async {
     state = StudentState.LOADING;
-    try {
-      state = StudentState.SUCCESS;
-      message = await service.addCourseOnStudent(idStudent, idCourse);
-    } catch (e) {
-      state = StudentState.ERROR;
-    } finally {
-      return message;
-    }
+    message = await service.addCourseOnStudent(idStudent, idCourse);
+    state = StudentState.SUCCESS;
+  }
+
+  Future<Map?> removeCourseOnStudent(idStudent, idCourse) async {
+    state = StudentState.LOADING;
+    message = await service.removeCourseOnStudent(idStudent, idCourse);
+    state = StudentState.SUCCESS;
   }
 
   StudentHomeModel studentHome = StudentHomeModel();

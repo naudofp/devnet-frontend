@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schooltech/app/controllers/student_controller.dart';
+import 'package:schooltech/app/models/course/course_holder.dart';
 import 'package:schooltech/app/views/components/alert_error.dart';
 import 'package:schooltech/app/views/components/card_outline_border.dart';
 import 'package:schooltech/app/views/components/loading_component.dart';
@@ -43,8 +44,7 @@ class _YourCoursesState extends State<YourCourses> {
         backgroundColor: Color.fromARGB(255, 0, 177, 136),
       ),
       body: Padding(
-        padding:
-            const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
+        padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
         child: FutureBuilder(
             future: controller.getStudentWithCourses(idUser),
             builder: (context, snapshot) {
@@ -61,7 +61,8 @@ class _YourCoursesState extends State<YourCourses> {
                     return InkWell(
                       onTap: () => Navigator.of(context).pushNamed(
                           '/details-course',
-                          arguments: snapshot.data?[index].id),
+                          arguments:
+                              CourseHolder(snapshot.data?[index].id, true)),
                       child: CardOutlineBorder(
                         title: snapshot.data?[index].nameCourse,
                         subtitle: snapshot.data?[index].score.toString(),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schooltech/app/controllers/app_controller.dart';
 import 'package:schooltech/app/views/components/switch_theme.dart';
 import 'package:schooltech/app/views/student/courses/your_courses_view.dart';
+import 'package:schooltech/app/views/student/friends/friends_list_view.dart';
 import 'package:schooltech/app/views/student/home_page_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -49,7 +50,7 @@ class HomeStudentState extends State<HomeStudent> {
         ),
         body: IndexedStack(
           index: currentOption,
-          children: [Container(), HomePageStudentView(), YourCourses()],
+          children: [FriendsListView(), HomePageStudentView(), YourCourses()],
         ));
   }
 

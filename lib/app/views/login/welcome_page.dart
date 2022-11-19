@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quickalert/quickalert.dart';
-import 'package:schooltech/app/controllers/app_controller.dart';
-import 'package:schooltech/app/views/components/alert_register.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -52,10 +49,7 @@ class __WelcomePageState extends State<WelcomePage>
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     if (prefs.getInt('idUser') != null) {
-      if (prefs.getString('role') == 'STUDENT_USER')
-        return '/home-student';
-      else
-        return '/login';
+      return '/home-student';
     } else
       return null;
   }
@@ -101,7 +95,7 @@ class __WelcomePageState extends State<WelcomePage>
                 SizedBox(height: 25),
                 ElevatedButton(
                   onPressed: () {
-                    alertRegister(context);
+                    Navigator.of(context).pushNamed('/register');
                   },
                   child: Text(
                     'Register',
@@ -140,23 +134,5 @@ class __WelcomePageState extends State<WelcomePage>
         _body(),
       ],
     ));
-  }
-}
-
-class DialogUser extends StatelessWidget {
-  const DialogUser({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        width: 500,
-        height: 700,
-        child: AlertDialog(
-          content: Container(),
-          backgroundColor: Colors.white,
-        ),
-      ),
-    );
   }
 }

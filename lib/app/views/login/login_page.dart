@@ -1,11 +1,9 @@
-import 'package:custom_signin_buttons/custom_signin_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:quickalert/quickalert.dart';
 import 'package:schooltech/app/controllers/app_controller.dart';
 import 'package:schooltech/app/controllers/user_controller.dart';
 import 'package:schooltech/app/models/user/UserLogin.dart';
 import 'package:schooltech/app/models/user/user_holder.dart';
-import 'package:schooltech/app/views/components/alert_register.dart';
 import 'package:schooltech/app/views/components/loading_component.dart';
 
 class LoginPage extends StatefulWidget {
@@ -139,7 +137,8 @@ class LoginState extends State<LoginPage> {
                                 alignment: Alignment.bottomCenter,
                                 child: TextButton(
                                     onPressed: () {
-                                      alertRegister(context);
+                                      Navigator.of(context)
+                                          .pushNamed('/register');
                                     },
                                     child: Text(
                                       'Sign up',
