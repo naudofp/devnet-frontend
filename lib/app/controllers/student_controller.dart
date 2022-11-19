@@ -22,6 +22,19 @@ class StudentController {
     }
   }
 
+  String? message;
+  Future<String?> addCourseOnStudent(idStudent, idCourse) async {
+    state = StudentState.LOADING;
+    try {
+      state = StudentState.SUCCESS;
+      message = await service.addCourseOnStudent(idStudent, idCourse);
+    } catch (e) {
+      state = StudentState.ERROR;
+    } finally {
+      return message;
+    }
+  }
+
   StudentHomeModel studentHome = StudentHomeModel();
   Future<StudentHomeModel> getStudentHome(int? id) async {
     state = StudentState.LOADING;

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:schooltech/app/controllers/course_controller.dart';
+import 'package:schooltech/app/controllers/student_controller.dart';
 import 'package:schooltech/app/models/course/card_details_mode.dart';
 import 'package:schooltech/app/views/components/loading_component.dart';
 import 'package:schooltech/app/views/components/switch_theme.dart';
 import 'package:schooltech/app/controllers/app_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CourseDetails extends StatefulWidget {
   @override
@@ -12,9 +14,21 @@ class CourseDetails extends StatefulWidget {
 
 class _CourseDetailsState extends State<CourseDetails> {
   CourseController controller = CourseController();
-
+  StudentController studentController = StudentController();
+  int? idUser;
   Future<CourseDetailsModel> getCourseDetails(id) async {
     return await controller.getCouseDetails(id);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getId();
+  }
+
+  Future getId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    idUser = prefs.getInt('idUser');
   }
 
   Widget build(BuildContext context) {
@@ -22,7 +36,10 @@ class _CourseDetailsState extends State<CourseDetails> {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () async {
+            await studentController.addCourseOnStudent(idUser, idCourse);
+            print(studentController.message);
+          },
           child: Icon(Icons.add),
           backgroundColor: AppController.instance.isDark
               ? Colors.white

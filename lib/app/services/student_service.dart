@@ -19,12 +19,16 @@ class StudentService {
   }
 
   // POST  STUDENT-ADD-COURSE  //
-  Future<String> addCourseOnStudent(idStudent, idCourse) async {
+  Future<String?> addCourseOnStudent(idStudent, idCourse) async {
     String url = baseUrl + '/add-course/' + idCourse + '/' + idStudent;
     Response response = await dio.post(url);
     String message = response.data;
 
-    return message;
+    if (response.statusCode == 200) {
+      return message;
+    } else {
+      return response.statusMessage;
+    }
   }
 
   //  GET   STUDENT-HOME //
