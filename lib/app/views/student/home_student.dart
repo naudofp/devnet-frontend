@@ -70,7 +70,9 @@ class HomeStudentState extends State<HomeStudent> {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed('/settings');
+            },
           ),
           ListTile(
             leading: Icon(

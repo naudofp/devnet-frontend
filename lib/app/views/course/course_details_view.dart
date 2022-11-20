@@ -221,7 +221,7 @@ class _CourseDetailsState extends State<CourseDetails> {
             children: [
               Icon(
                 Icons.check,
-                color: Colors.white,
+                color: Color.fromRGBO(255, 255, 255, 1),
               ),
               SizedBox(
                 width: 8,

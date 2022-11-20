@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:schooltech/app/views/core/course_details_view.dart';
+import 'package:schooltech/app/views/core/settings_view.dart';
+import 'package:schooltech/app/views/course/course_details_view.dart';
 import 'package:schooltech/app/views/login/welcome_page.dart';
 import 'package:schooltech/app/views/register/register_student.dart';
 import 'package:schooltech/app/controllers/app_controller.dart';
@@ -25,6 +26,7 @@ class AppWidget extends StatelessWidget {
             '/register': (context) => RegisterStudent(),
             '/home-student': (context) => HomeStudent(),
             '/details-course': (context) => CourseDetails(),
+            '/settings': (context) => SettingsView(),
           },
         );
       },

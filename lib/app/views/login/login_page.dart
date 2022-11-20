@@ -44,7 +44,8 @@ class LoginState extends State<LoginPage> {
                             Container(
                                 alignment: Alignment.center,
                                 child: Text('Welcome',
-                                    style: TextStyle(fontSize: 38))),
+                                    style: TextStyle(
+                                        fontSize: 38, fontFamily: 'Sono'))),
                             SizedBox(height: 50),
                             Container(
                               width: 500,

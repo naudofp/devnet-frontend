@@ -11,11 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
   custom_signin_buttons: ^1.0.2
-  flutter_svg: ^1.1.6
   http: ^0.13.5
   shared_preferences: ^2.0.15
   dio: ^4.0.6
   quickalert: ^1.0.0
+  flutter_settings_screens: ^0.2.2
 
 dev_dependencies:
   flutter_test:
@@ -29,9 +29,4 @@ flutter:
    - assets/images/background_login.jpg
    - assets/images/example.gif
    - assets/images/courses.jpeg
-
-fonts:
-  - family: Sono
-    fonts:
-      - asset: assets/images/fonts/Sono.ttf
 
