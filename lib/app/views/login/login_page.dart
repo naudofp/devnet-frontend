@@ -64,10 +64,10 @@ class LoginState extends State<LoginPage> {
                                       }
                                     },
                                     onChanged: (value) {
-                                      userLogin.email = value;
+                                      userLogin.username = value;
                                     },
                                     decoration: InputDecoration(
-                                        labelText: 'Email',
+                                        labelText: 'Username',
                                         border: OutlineInputBorder(
                                             borderRadius:
                                                 BorderRadius.circular(15))),
@@ -101,8 +101,12 @@ class LoginState extends State<LoginPage> {
                               onPressed: () async {
                                 await controller.login(userLogin);
 
-                                if (controller.state == UserState.LOADING) {
-                                  LoadingComponent();
+                                if (controller.state == UserState.SUCCESS) {
+                                  UserHolder holder = controller.holder;
+
+                                  controller.setHolder(holder);
+                                  Navigator.of(context)
+                                      .pushReplacementNamed('/home-student');
                                 } else if (controller.state ==
                                     UserState.ERROR) {
                                   QuickAlert.show(
@@ -112,11 +116,7 @@ class LoginState extends State<LoginPage> {
                                       confirmBtnText: 'Try Again',
                                       confirmBtnColor: Colors.grey);
                                 } else {
-                                  UserHolder holder = controller.holder;
-
-                                  controller.setHolder(holder);
-                                  Navigator.of(context)
-                                      .pushReplacementNamed('/home-student');
+                                  LoadingComponent();
                                 }
                               },
                               onLongPress: () {
@@ -144,7 +144,6 @@ class LoginState extends State<LoginPage> {
                                     child: Text(
                                       'Sign up',
                                       style: TextStyle(
-                                          fontFamily: 'Sono',
                                           color:
                                               Color.fromARGB(255, 0, 177, 136)),
                                     )))

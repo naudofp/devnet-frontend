@@ -50,6 +50,13 @@ class SearchStudents extends SearchDelegate<String> {
                       height: 200,
                     )),
                 SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  snapshot.data?.username ?? '',
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(
                   height: 20,
                 ),
                 Container(
@@ -91,7 +98,9 @@ class SearchStudents extends SearchDelegate<String> {
                                     style: TextStyle(
                                         fontSize: 50,
                                         fontWeight: FontWeight.bold,
-                                        color: Color.fromARGB(255, 1, 157, 6))),
+                                        color: AppController.instance.isDark
+                                            ? Color.fromARGB(255, 49, 255, 56)
+                                            : Color.fromARGB(255, 1, 157, 6))),
                               ],
                             )),
                 ),
@@ -139,7 +148,7 @@ class SearchStudents extends SearchDelegate<String> {
                 );
               },
               scrollDirection: Axis.vertical,
-              itemCount: snapshot.data!.length,
+              itemCount: snapshot.data?.length ?? 0,
               itemBuilder: (context, index) {
                 if (controller.state == StudentState.SUCCESS) {
                   return InkWell(
@@ -148,8 +157,8 @@ class SearchStudents extends SearchDelegate<String> {
                       showResults(context);
                     },
                     child: CardOutlineBorder(
-                      title: snapshot.data![index].name,
-                      subtitle: snapshot.data![index].city,
+                      title: snapshot.data![index].username,
+                      subtitle: snapshot.data![index].name,
                       sizeTitle: 20,
                       sizeSubtitle: 20,
                     ),

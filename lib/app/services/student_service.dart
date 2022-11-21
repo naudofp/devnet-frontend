@@ -14,7 +14,6 @@ class StudentService {
   // POST  STUDENT-REGISTER //
   Future<UserHolder> postStudent(newStudent) async {
     Response response = await dio.post(baseUrl, data: newStudent);
-    print(response.statusMessage);
     UserHolder data = UserHolder.fromJson(response.data);
 
     return data;

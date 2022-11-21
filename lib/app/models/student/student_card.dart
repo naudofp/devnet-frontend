@@ -1,24 +1,21 @@
 class StudentCardModel {
   int? id;
+  String? username;
   String? name;
-  String? state;
-  String? city;
 
-  StudentCardModel({this.id, this.name, this.state, this.city});
+  StudentCardModel({this.id, this.name, this.username});
 
   StudentCardModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    username = json['username'];
     name = json['name'];
-    state = json['state'];
-    city = json['city'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
+    data['username'] = this.username;
     data['name'] = this.name;
-    data['state'] = this.state;
-    data['city'] = this.city;
     return data;
   }
 }

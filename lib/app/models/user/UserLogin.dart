@@ -1,14 +1,14 @@
 class UserLogin {
-  String email;
+  String username;
   String password;
 
-  UserLogin(this.email, this.password);
+  UserLogin(this.username, this.password);
 
   factory UserLogin.fromJson(Map json) {
-    return UserLogin(json['email'], json['password']);
+    return UserLogin(json['username'], json['password']);
   }
 
   Map toJson() {
-    return {'email': email, 'password': password};
+    return {'username': username, 'password': password};
   }
 }

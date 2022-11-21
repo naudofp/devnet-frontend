@@ -61,7 +61,6 @@ class CardScore extends StatefulWidget {
 class _CardScoreState extends State<CardScore> {
   int? idUser;
   final controller = StudentController();
-  StudentHomeModel student = StudentHomeModel();
 
   @override
   void initState() {

@@ -70,7 +70,7 @@ class __WelcomePageState extends State<WelcomePage>
                   color: Colors.white,
                 ),
                 Text(
-                  'SCHOOLTECH',
+                  'DEVNET',
                   style: TextStyle(
                       fontFamily: 'Sono', fontSize: 25, color: Colors.white),
                 ),
