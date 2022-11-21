@@ -1,4 +1,4 @@
-# SchoolTech
+# DevNet
 [![NPM](https://img.shields.io/badge/license-MIT-green)](https://github.com/naudofp/schooltech-frontend/blob/main/LICENSE)
 
 ## Sobre o Projeto
@@ -9,17 +9,15 @@ absorver e aprender muitas coisas.
 
 ## Funcionalidades
 
-O Sistema consiste em uma plataforma em que o estudante pode reunir seus cursos e conhecimentos,
+O Sistema consiste em uma plataforma em que o desenvolvedores podem reunir seus cursos e conhecimentos,
 assim então elevando o seu 'Score', o Score é uma quantia de pontos que cada curso possue, quanto mais cursos o 
-estudante possuir, mais auto será o seu Score.
+dev possuir, mais auto será o seu Score.
 
-É permitido também que Universidades, Escolas ou Plataformas de Ensino, criem suas contas, e seus 
-cursos, até mesmo uma Universidade adicionar seus alunos.
+O dev pode pesquisar e fazer amizade com outros desenvolvedores, podendo ver seus conhecimentos e score. 
 
 ### Modelo Conceitual
 
-![modelo=conceitual](https://user-images.githubusercontent.com/106287877/202287729-ecf6ec19-4f10-4a6c-a127-3d240e50857f.png)
-
+![modelo-conceitual](https://user-images.githubusercontent.com/106287877/203152897-71804ec5-1dbb-416a-8151-19f4765417ca.png)
 
 # Tecnologias Utilizadas
 ## Back End
@@ -32,17 +30,17 @@ cursos, até mesmo uma Universidade adicionar seus alunos.
 ## Front End
 
 - Dart
+
 - Flutter
 
 # Layout - SchoolTech;
 
-![welcome](https://user-images.githubusercontent.com/106287877/202284493-4eafe8b1-c1c6-4d2a-81a1-49b4ad3e8a3e.png)
-![login](https://user-images.githubusercontent.com/106287877/202284541-c970b423-8837-47e2-a49a-86247e05bb57.png)
 
-
-![home-student](https://user-images.githubusercontent.com/106287877/202284577-9596af27-89c6-43b1-8da9-514556d081b9.png)
-![dark](https://user-images.githubusercontent.com/106287877/202284606-e6879727-dea7-4238-aeb5-c42927b07148.png)
-
-![course-details](https://user-images.githubusercontent.com/106287877/202284637-a2631c85-108a-4ad9-84a1-ebbbdeaf2153.png)
-![register](https://user-images.githubusercontent.com/106287877/202284960-797224ef-711e-4bab-800e-225f9c21afeb.png)
-
+![welcome](https://user-images.githubusercontent.com/106287877/203154661-a3713476-6961-4aee-a3ba-6dac401eee48.png)
+![login](https://user-images.githubusercontent.com/106287877/203154771-fc860b15-3d97-44f3-9f00-c6ea83c9f854.png)
+![home](https://user-images.githubusercontent.com/106287877/203154833-9db79cae-f8d4-4deb-aa29-06d57e49eb47.png)
+![search](https://user-images.githubusercontent.com/106287877/203155016-d2b98911-5591-4e7c-9687-2e5e30df50aa.png)
+![course](https://user-images.githubusercontent.com/106287877/203154738-08288976-3138-4b6c-9dd1-072c4ee12797.png)
+![profile_friend](https://user-images.githubusercontent.com/106287877/203155114-7c3c31cf-30d8-4f61-b7d3-0de79acd69ec.png)
+![drawer](https://user-images.githubusercontent.com/106287877/203155175-5e7360e8-5cd5-47f0-93c5-2ec1d0ef7bf1.png)
+![settings](https://user-images.githubusercontent.com/106287877/203155195-6b6cbeda-e2cf-446e-b5ed-8e30dfbd47e7.png)
