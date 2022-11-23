@@ -29,132 +29,127 @@ class _RegisterStudentState extends State<RegisterStudent> {
   @override
   Widget _body() {
     return SingleChildScrollView(
-        child: Padding(
-            padding:
-                const EdgeInsets.only(top: 30, left: 25, right: 25, bottom: 30),
-            child: Container(
-                width: 500,
-                height: 400,
-                child: Theme(
-                    data: Theme.of(context).copyWith(
-                        brightness: Brightness.light,
-                        colorScheme: ColorScheme.dark(
-                            primary: Color.fromARGB(255, 0, 177, 136),
-                            secondary: Colors.white)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Container(
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              BackButton(
-                                  color: Colors.white,
-                                  onPressed: (() {
-                                    Navigator.of(context)
-                                        .pushReplacementNamed('/');
-                                  })),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Let's Start",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        shadows: [
-                                          Shadow(
-                                              color: Color.fromARGB(
-                                                  255, 0, 177, 136),
-                                              blurRadius: 20)
-                                        ],
-                                        color: Colors.white,
-                                        fontSize: 28,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 20),
-                              _form(),
-                              ElevatedButton(
-                                child: Text(
-                                  'Confirm',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                      side: BorderSide(
+        child: Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      color: Colors.black,
+      child: Center(
+        child: Container(
+            width: 500,
+            height: 420,
+            child: Theme(
+                data: Theme.of(context).copyWith(
+                    brightness: Brightness.light,
+                    colorScheme: ColorScheme.dark(
+                        primary: Color.fromARGB(255, 0, 177, 136),
+                        secondary: Colors.white)),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Container(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          BackButton(
+                              color: Colors.white,
+                              onPressed: (() {
+                                Navigator.of(context).pushReplacementNamed('/');
+                              })),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Let's Start",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    shadows: [
+                                      Shadow(
                                           color:
                                               Color.fromARGB(255, 0, 177, 136),
-                                          width: 2),
-                                    ),
-                                    backgroundColor: Colors.transparent,
-                                    fixedSize: Size(500, 45)),
-                                onPressed: () async {
-                                  var student = StudentRegisterModel(
-                                      name: postName.text,
-                                      password: postPassword.text,
-                                      username: postUsername.text);
+                                          blurRadius: 20)
+                                    ],
+                                    color: Colors.white,
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          _form(),
+                          ElevatedButton(
+                            child: Text(
+                              'Confirm',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                  side: BorderSide(
+                                      color: Color.fromARGB(255, 0, 177, 136),
+                                      width: 2),
+                                ),
+                                backgroundColor: Colors.transparent,
+                                fixedSize: Size(500, 45)),
+                            onPressed: () async {
+                              var student = StudentRegisterModel(
+                                  name: postName.text,
+                                  password: postPassword.text,
+                                  username: postUsername.text);
 
-                                  if (student.name != "" &&
-                                      student.username != "" &&
-                                      student.password != "") {
-                                    await controller.postStudent(student);
+                              if (student.name != "" &&
+                                  student.username != "" &&
+                                  student.password != "") {
+                                await controller.postStudent(student);
 
-                                    if (controller.state ==
-                                        StudentState.SUCCESS) {
-                                      Navigator.of(context).pushNamed('/login');
-                                      QuickAlert.show(
-                                          context: context,
-                                          type: QuickAlertType.success,
-                                          title: 'Congratulations');
-                                    } else if (controller.state ==
-                                        StudentState.ERROR) {
-                                      final snackBar = SnackBar(
-                                        duration: Duration(seconds: 2),
-                                        content: Row(
-                                          children: [
-                                            Text(
-                                              postUsername.text +
-                                                  ' is already registered',
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                          ],
+                                if (controller.state == StudentState.SUCCESS) {
+                                  Navigator.of(context).pushNamed('/login');
+                                  QuickAlert.show(
+                                      context: context,
+                                      type: QuickAlertType.success,
+                                      title: 'Congratulations');
+                                } else if (controller.state ==
+                                    StudentState.ERROR) {
+                                  final snackBar = SnackBar(
+                                    duration: Duration(seconds: 2),
+                                    content: Row(
+                                      children: [
+                                        Text(
+                                          postUsername.text +
+                                              ' is already registered',
+                                          style: TextStyle(color: Colors.white),
                                         ),
-                                        backgroundColor: Colors.red,
-                                      );
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(snackBar);
-                                    }
-                                  } else {
-                                    QuickAlert.show(
-                                        context: context,
-                                        type: QuickAlertType.error,
-                                        title: 'No Authorized');
-                                  }
-                                },
-                              )
-                            ]),
-                      ),
-                    )))));
+                                      ],
+                                    ),
+                                    backgroundColor: Colors.red,
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
+                                }
+                              } else {
+                                QuickAlert.show(
+                                    context: context,
+                                    type: QuickAlertType.error,
+                                    title: 'No Authorized');
+                              }
+                            },
+                          )
+                        ]),
+                  ),
+                ))),
+      ),
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-      alignment: Alignment.center,
-      children: [
-        Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          color: Colors.black,
-        ),
-        _body(),
-      ],
-    ));
+      body: Column(
+        children: [
+          _body(),
+        ],
+      ),
+    );
   }
 
   Widget _form() {
