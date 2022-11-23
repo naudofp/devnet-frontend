@@ -27,78 +27,81 @@ class __WelcomePageState extends State<WelcomePage> {
   }
 
   Widget _body() {
-    return Center(
-      child: Container(
-        width: 250,
-        height: 470,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                Icon(
-                  Icons.code_sharp,
-                  size: 170,
-                  shadows: [
-                    Shadow(
-                        color: Color.fromARGB(255, 0, 177, 136), blurRadius: 20)
-                  ],
-                  color: Colors.white,
-                ),
-                Text(
-                  'DEVNET',
-                  style: TextStyle(
-                      fontFamily: 'Sono',
-                      fontSize: 30,
-                      color: Colors.white,
-                      shadows: [
-                        Shadow(
-                            color: Color.fromARGB(255, 0, 177, 136),
-                            blurRadius: 40)
-                      ]),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/login');
-                  },
-                  child: Text(
-                    'Login',
-                    style: TextStyle(fontSize: 20),
+    return SingleChildScrollView(
+      child: Center(
+        child: Container(
+          width: 250,
+          height: 470,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Icon(
+                    Icons.code_sharp,
+                    size: 170,
+                    shadows: [
+                      Shadow(
+                          color: Color.fromARGB(255, 0, 177, 136),
+                          blurRadius: 20)
+                    ],
+                    color: Colors.white,
                   ),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 0, 0, 0),
-                      fixedSize: Size(220, 55),
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(
+                  Text(
+                    'DEVNET',
+                    style: TextStyle(
+                        fontFamily: 'Sono',
+                        fontSize: 30,
+                        color: Colors.white,
+                        shadows: [
+                          Shadow(
                               color: Color.fromARGB(255, 0, 177, 136),
-                              width: 3),
-                          borderRadius: BorderRadius.circular(22))),
-                ),
-                SizedBox(height: 25),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/register');
-                  },
-                  child: Text(
-                    'Register',
-                    style: TextStyle(fontSize: 20),
+                              blurRadius: 40)
+                        ]),
                   ),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 0, 0, 0),
-                      fixedSize: Size(220, 55),
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              color: Color.fromARGB(255, 0, 177, 136),
-                              width: 3),
-                          borderRadius: BorderRadius.circular(22))),
-                )
-              ],
-            ),
-          ],
+                ],
+              ),
+              Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pushReplacementNamed('/login');
+                    },
+                    child: Text(
+                      'Login',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+                        fixedSize: Size(220, 55),
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                                color: Color.fromARGB(255, 0, 177, 136),
+                                width: 3),
+                            borderRadius: BorderRadius.circular(22))),
+                  ),
+                  SizedBox(height: 25),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/register');
+                    },
+                    child: Text(
+                      'Register',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+                        fixedSize: Size(220, 55),
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                                color: Color.fromARGB(255, 0, 177, 136),
+                                width: 3),
+                            borderRadius: BorderRadius.circular(22))),
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
