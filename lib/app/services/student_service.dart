@@ -45,6 +45,17 @@ class StudentService {
     }
   }
 
+  // DELETE  STUDENT  //
+  Future<Map?> deleteUser(idUser) async {
+    Uri url = Uri.http('localhost:8080', '/student/$idUser');
+    final response = await http.delete(url);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return {"message": response.body, "status": response.statusCode};
+    } else if (response.statusCode == 500) {
+      return jsonDecode(response.body);
+    }
+  }
+
   //  GET   STUDENT-HOME //
   Future<StudentHomeModel> getStudentHome(int? id) async {
     String url = baseUrl + id.toString();

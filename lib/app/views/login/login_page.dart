@@ -14,7 +14,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginState extends State<LoginPage> {
-  final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -30,126 +29,144 @@ class LoginState extends State<LoginPage> {
             child: Padding(
               padding:
                   EdgeInsets.only(top: 25, left: 10, right: 10, bottom: 25),
-              child: Form(
-                key: formKey,
-                child: Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          top: 50, left: 10, bottom: 0, right: 10),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+              child: Container(
+                  child: Padding(
+                padding: const EdgeInsets.only(
+                    top: 50, left: 10, bottom: 0, right: 10),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                          alignment: Alignment.center,
+                          child: Text('Welcome',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  shadows: [
+                                    Shadow(
+                                        color: Color.fromARGB(255, 0, 177, 136),
+                                        blurRadius: 15)
+                                  ],
+                                  fontSize: 38,
+                                  fontFamily: 'Sono'))),
+                      SizedBox(height: 50),
+                      Container(
+                        width: 500,
+                        child: Column(
                           children: [
-                            Container(
-                                alignment: Alignment.center,
-                                child: Text('Welcome',
-                                    style: TextStyle(
-                                        fontSize: 38, fontFamily: 'Sono'))),
-                            SizedBox(height: 50),
-                            Container(
-                              width: 500,
-                              child: Column(
-                                children: [
-                                  TextFormField(
-                                    controller: emailController,
-                                    keyboardType: TextInputType.emailAddress,
-                                    validator: (email) {
-                                      if (email == null || email.isEmpty) {
-                                        return 'Please, typing something';
-                                      } else if (!RegExp(
-                                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                          .hasMatch(emailController.text)) {
-                                        return "Invalid email";
-                                      }
-                                    },
-                                    onChanged: (value) {
-                                      userLogin.username = value;
-                                    },
-                                    decoration: InputDecoration(
-                                        labelText: 'Username',
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(15))),
-                                  ),
-                                  SizedBox(height: 20),
-                                  TextFormField(
-                                      controller: passwordController,
-                                      keyboardType: TextInputType.text,
-                                      validator: (senha) {
-                                        if (senha == null || senha.isEmpty) {
-                                          return "Please, typing something";
-                                        }
-                                        return null;
-                                      },
-                                      obscureText: true,
-                                      onChanged: (value) {
-                                        userLogin.password = value;
-                                      },
-                                      decoration: InputDecoration(
-                                          labelText: 'Password',
-                                          border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(15)))),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            ElevatedButton(
-                              onPressed: () async {
-                                await controller.login(userLogin);
-
-                                if (controller.state == UserState.SUCCESS) {
-                                  UserHolder holder = controller.holder;
-
-                                  controller.setHolder(holder);
-                                  Navigator.of(context)
-                                      .pushReplacementNamed('/home-student');
-                                } else if (controller.state ==
-                                    UserState.ERROR) {
-                                  QuickAlert.show(
-                                      context: context,
-                                      type: QuickAlertType.error,
-                                      title: 'Something be wrong',
-                                      confirmBtnText: 'Try Again',
-                                      confirmBtnColor: Colors.grey);
-                                } else {
-                                  LoadingComponent();
-                                }
+                            TextField(
+                              controller: emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              onChanged: (value) {
+                                userLogin.username = value;
                               },
-                              onLongPress: () {
-                                Navigator.of(context)
-                                    .pushReplacementNamed('/home-student');
-                              },
-                              child: Text('Sign in'),
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Color.fromARGB(255, 0, 177, 136),
-                                  minimumSize: Size(510, 55),
-                                  shape: RoundedRectangleBorder(
+                              style: TextStyle(color: Colors.white),
+                              decoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                      borderSide: BorderSide(
+                                          color: Color.fromARGB(
+                                              105, 158, 158, 158),
+                                          width: 2)),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                      borderSide: BorderSide(
+                                          color:
+                                              Color.fromARGB(255, 0, 177, 136),
+                                          width: 2)),
+                                  labelText: 'Username',
+                                  labelStyle: TextStyle(
+                                    color: Colors.grey,
+                                  ),
+                                  border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(15))),
                             ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                                alignment: Alignment.bottomCenter,
-                                child: TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context)
-                                          .pushNamed('/register');
-                                    },
-                                    child: Text(
-                                      'Sign up',
-                                      style: TextStyle(
+                            SizedBox(height: 20),
+                            TextField(
+                                style: TextStyle(color: Colors.white),
+                                controller: passwordController,
+                                keyboardType: TextInputType.text,
+                                obscureText: true,
+                                onChanged: (value) {
+                                  userLogin.password = value;
+                                },
+                                decoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                      borderSide: BorderSide(
+                                          color: Color.fromARGB(
+                                              105, 158, 158, 158),
+                                          width: 2)),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                      borderSide: BorderSide(
                                           color:
-                                              Color.fromARGB(255, 0, 177, 136)),
-                                    )))
-                          ]),
-                    )),
-              ),
+                                              Color.fromARGB(255, 0, 177, 136),
+                                          width: 2)),
+                                  labelText: 'Password',
+                                  labelStyle: TextStyle(
+                                    color: Colors.grey,
+                                  ),
+                                )),
+                            SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          await controller.login(userLogin);
+
+                          if (controller.state == UserState.SUCCESS) {
+                            UserHolder holder = controller.holder;
+
+                            controller.setHolder(holder);
+                            Navigator.of(context)
+                                .pushReplacementNamed('/home-student');
+                          } else if (controller.state == UserState.ERROR) {
+                            QuickAlert.show(
+                                context: context,
+                                type: QuickAlertType.error,
+                                title: 'Something be wrong',
+                                confirmBtnText: 'Try Again',
+                                confirmBtnColor: Colors.grey);
+                          } else {
+                            LoadingComponent();
+                          }
+                        },
+                        onLongPress: () {
+                          Navigator.of(context)
+                              .pushReplacementNamed('/home-student');
+                        },
+                        child: Text(
+                          'Sign in',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            minimumSize: Size(510, 55),
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    width: 2,
+                                    color: Color.fromARGB(255, 0, 177, 136)),
+                                borderRadius: BorderRadius.circular(15))),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                          alignment: Alignment.bottomCenter,
+                          child: TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pushNamed('/register');
+                              },
+                              child: Text(
+                                'Sign up',
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 0, 177, 136)),
+                              )))
+                    ]),
+              )),
             )));
   }
 
@@ -162,10 +179,7 @@ class LoginState extends State<LoginPage> {
         Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: Image.asset(
-            'assets/images/background_login.jpg',
-            fit: BoxFit.cover,
-          ),
+          color: Colors.black,
         ),
         _body(),
       ],

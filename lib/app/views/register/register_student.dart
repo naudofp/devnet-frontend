@@ -34,12 +34,11 @@ class _RegisterStudentState extends State<RegisterStudent> {
                 const EdgeInsets.only(top: 30, left: 25, right: 25, bottom: 30),
             child: Container(
                 width: 500,
-                height: 370,
-                color: Colors.white,
+                height: 400,
                 child: Theme(
                     data: Theme.of(context).copyWith(
                         brightness: Brightness.light,
-                        colorScheme: ColorScheme.light(
+                        colorScheme: ColorScheme.dark(
                             primary: Color.fromARGB(255, 0, 177, 136),
                             secondary: Colors.white)),
                     child: Padding(
@@ -50,7 +49,7 @@ class _RegisterStudentState extends State<RegisterStudent> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
                               BackButton(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   onPressed: (() {
                                     Navigator.of(context)
                                         .pushReplacementNamed('/');
@@ -59,11 +58,17 @@ class _RegisterStudentState extends State<RegisterStudent> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Register",
+                                    "Let's Start",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
+                                        shadows: [
+                                          Shadow(
+                                              color: Color.fromARGB(
+                                                  255, 0, 177, 136),
+                                              blurRadius: 20)
+                                        ],
+                                        color: Colors.white,
+                                        fontSize: 28,
                                         fontWeight: FontWeight.w500),
                                   ),
                                 ],
@@ -73,9 +78,18 @@ class _RegisterStudentState extends State<RegisterStudent> {
                               ElevatedButton(
                                 child: Text(
                                   'Confirm',
-                                  style: TextStyle(fontSize: 18),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18),
                                 ),
                                 style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      side: BorderSide(
+                                          color:
+                                              Color.fromARGB(255, 0, 177, 136),
+                                          width: 2),
+                                    ),
+                                    backgroundColor: Colors.transparent,
                                     fixedSize: Size(500, 45)),
                                 onPressed: () async {
                                   var student = StudentRegisterModel(
@@ -136,10 +150,7 @@ class _RegisterStudentState extends State<RegisterStudent> {
         Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: Image.asset(
-            'assets/images/background_login.jpg',
-            fit: BoxFit.cover,
-          ),
+          color: Colors.black,
         ),
         _body(),
       ],
@@ -151,15 +162,17 @@ class _RegisterStudentState extends State<RegisterStudent> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         TextField(
+            style: TextStyle(color: Colors.white),
             controller: postName,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.person_outline,
+                  color: Colors.grey,
                 ),
                 labelText: 'Name',
                 labelStyle: TextStyle(
-                  color: Colors.black,
+                  color: Colors.grey,
                 ),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15)))),
@@ -167,15 +180,17 @@ class _RegisterStudentState extends State<RegisterStudent> {
           height: 15,
         ),
         TextField(
+            style: TextStyle(color: Colors.white),
             controller: postUsername,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.person_outline,
+                  color: Colors.grey,
                 ),
                 labelText: 'Username',
                 labelStyle: TextStyle(
-                  color: Colors.black,
+                  color: Colors.grey,
                 ),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15)))),
@@ -184,16 +199,20 @@ class _RegisterStudentState extends State<RegisterStudent> {
         ),
         TextField(
             controller: postPassword,
+            style: TextStyle(color: Colors.white),
             obscureText: true,
             onChanged: (value) => setState(() {
                   errorText = _errorText(value);
                 }),
             keyboardType: TextInputType.visiblePassword,
             decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock_outline),
+                prefixIcon: Icon(
+                  Icons.lock_outline,
+                  color: Colors.grey,
+                ),
                 labelText: 'Password',
                 labelStyle: TextStyle(
-                  color: Colors.black,
+                  color: Colors.grey,
                 ),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15)))),

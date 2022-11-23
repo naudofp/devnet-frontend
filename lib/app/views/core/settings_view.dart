@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:schooltech/app/controllers/app_controller.dart';
+import 'package:schooltech/app/controllers/student_controller.dart';
 import 'package:schooltech/app/views/components/copyirght_component.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
@@ -10,6 +14,20 @@ class SettingsView extends StatefulWidget {
 }
 
 class _SettingsViewState extends State<SettingsView> {
+  StudentController controller = StudentController();
+  int? idUser;
+
+  Future getId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    idUser = prefs.getInt('idUser');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getId();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,8 +67,11 @@ class _SettingsViewState extends State<SettingsView> {
                 ),
                 _option(
                   title: 'Logout',
-                  function: () {
-                    print('logout');
+                  function: () async {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.clear();
+                    Navigator.of(context).pushReplacementNamed('/');
                   },
                   backgroundColorButton: Colors.blueAccent,
                   icon: Icon(
@@ -60,7 +81,50 @@ class _SettingsViewState extends State<SettingsView> {
                 ),
                 _option(
                     function: () {
-                      print('remove');
+                      QuickAlert.show(
+                          context: context,
+                          type: QuickAlertType.warning,
+                          title: 'Are you sure?',
+                          cancelBtnText: 'Cancel',
+                          confirmBtnText: "Yes, I'm sure",
+                          showCancelBtn: true,
+                          onConfirmBtnTap: () async {
+                            await controller.deleteUser(idUser);
+
+                            if (controller.state == StudentState.SUCCESS) {
+                              SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
+                              prefs.clear();
+                              Navigator.of(context).pushReplacementNamed('/');
+
+                              final snackBar = SnackBar(
+                                duration: Duration(seconds: 3),
+                                content: Row(
+                                  children: [
+                                    Icon(
+                                      controller.message!['status'] == 200
+                                          ? Icons.check
+                                          : Icons.clear,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Text(
+                                      controller.message!['message'],
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                                backgroundColor:
+                                    controller.message!['status'] == 200
+                                        ? Color.fromARGB(255, 103, 180, 15)
+                                        : Colors.red,
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            }
+                          });
                     },
                     title: 'Delete Account',
                     backgroundColorButton: Colors.orange,

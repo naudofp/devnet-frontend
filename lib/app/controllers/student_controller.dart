@@ -35,6 +35,17 @@ class StudentController {
     state = StudentState.SUCCESS;
   }
 
+  Future<Map?> deleteUser(idUser) async {
+    state = StudentState.LOADING;
+
+    message = await service.deleteUser(idUser);
+
+    if (message?["status"] == 200 || message?["status"] == 201)
+      state = StudentState.SUCCESS;
+    else
+      state = StudentState.ERROR;
+  }
+
   StudentHomeModel studentHome = StudentHomeModel();
   Future<StudentHomeModel> getStudentHome(int? id) async {
     state = StudentState.LOADING;

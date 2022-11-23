@@ -8,41 +8,13 @@ class WelcomePage extends StatefulWidget {
   State<WelcomePage> createState() => __WelcomePageState();
 }
 
-class __WelcomePageState extends State<WelcomePage>
-    with TickerProviderStateMixin {
-  late AnimationController animationController =
-      AnimationController(vsync: this, duration: Duration(seconds: 50));
-
+class __WelcomePageState extends State<WelcomePage> {
   @override
   void initState() {
     super.initState();
     findUser().then((value) {
-      if (value != null)
-        Navigator.of(context).pushReplacementNamed(value);
-      else
-        startAnimation();
+      if (value != null) Navigator.of(context).pushReplacementNamed(value);
     });
-  }
-
-  @override
-  void dispose() {
-    animationController.notifyStatusListeners(AnimationStatus.dismissed);
-    animationController.dispose();
-    super.dispose();
-  }
-
-  startAnimation() {
-    animationController.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        animationController.reverse();
-      } else if (status == AnimationStatus.dismissed)
-        animationController.forward();
-    });
-
-    animationController.addListener(() {
-      setState(() {});
-    });
-    animationController.forward();
   }
 
   Future<String?> findUser() async {
@@ -65,14 +37,25 @@ class __WelcomePageState extends State<WelcomePage>
             Column(
               children: [
                 Icon(
-                  Icons.school_rounded,
-                  size: 200,
+                  Icons.code_sharp,
+                  size: 170,
+                  shadows: [
+                    Shadow(
+                        color: Color.fromARGB(255, 0, 177, 136), blurRadius: 20)
+                  ],
                   color: Colors.white,
                 ),
                 Text(
                   'DEVNET',
                   style: TextStyle(
-                      fontFamily: 'Sono', fontSize: 25, color: Colors.white),
+                      fontFamily: 'Sono',
+                      fontSize: 30,
+                      color: Colors.white,
+                      shadows: [
+                        Shadow(
+                            color: Color.fromARGB(255, 0, 177, 136),
+                            blurRadius: 40)
+                      ]),
                 ),
               ],
             ),
@@ -87,9 +70,12 @@ class __WelcomePageState extends State<WelcomePage>
                     style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 0, 177, 136),
+                      backgroundColor: Color.fromARGB(255, 0, 0, 0),
                       fixedSize: Size(220, 55),
                       shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                              color: Color.fromARGB(255, 0, 177, 136),
+                              width: 3),
                           borderRadius: BorderRadius.circular(22))),
                 ),
                 SizedBox(height: 25),
@@ -102,9 +88,12 @@ class __WelcomePageState extends State<WelcomePage>
                     style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 0, 177, 136),
+                      backgroundColor: Color.fromARGB(255, 0, 0, 0),
                       fixedSize: Size(220, 55),
                       shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                              color: Color.fromARGB(255, 0, 177, 136),
+                              width: 3),
                           borderRadius: BorderRadius.circular(22))),
                 )
               ],
@@ -124,12 +113,7 @@ class __WelcomePageState extends State<WelcomePage>
         Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: AnimatedScale(
-            duration: Duration(),
-            scale: animationController.value + 1,
-            child: Image.asset('assets/images/background_login.jpg',
-                fit: BoxFit.cover),
-          ),
+          color: Colors.black,
         ),
         _body(),
       ],
