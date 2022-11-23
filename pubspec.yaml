@@ -16,12 +16,13 @@ dependencies:
   dio: ^4.0.6
   quickalert: ^1.0.0
   flutter_settings_screens: ^0.2.2
+  url_launcher: ^6.1.7
+  iconsax: ^0.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  footer: ^0.0.4
 
 flutter:
   uses-material-design: true

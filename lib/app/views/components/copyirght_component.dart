@@ -9,7 +9,7 @@ class CopyrightComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 80,
       width: 500,
       child: Center(
           child: Text(

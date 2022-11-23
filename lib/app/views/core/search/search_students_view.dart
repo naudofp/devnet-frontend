@@ -82,7 +82,7 @@ class SearchStudents extends SearchDelegate<String> {
                                     Text(
                                       snapshot.data!.name ?? '',
                                       style: TextStyle(
-                                          fontSize: 25,
+                                          fontSize: 20,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     SizedBox(

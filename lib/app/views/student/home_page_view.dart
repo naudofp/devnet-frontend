@@ -18,7 +18,7 @@ class HomePageStudentView extends StatelessWidget {
         child: Container(
           child: Padding(
             padding:
-                const EdgeInsets.only(top: 50, left: 25, right: 25, bottom: 30),
+                const EdgeInsets.only(top: 20, left: 25, right: 25, bottom: 10),
             child: Column(
               children: [
                 Container(
@@ -103,7 +103,7 @@ class _CardScoreState extends State<CardScore> {
                               Text(
                                 snapshot.data!.name ?? '',
                                 style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
+                                    fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
                                 height: 10,
