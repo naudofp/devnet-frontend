@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:schooltech/app_controller.dart';
-import 'package:schooltech/login/login_page.dart';
+import 'package:schooltech/app/views/core/settings_view.dart';
+import 'package:schooltech/app/views/course/course_details_view.dart';
+import 'package:schooltech/app/views/login/welcome_page.dart';
+import 'package:schooltech/app/views/register/register_student.dart';
+import 'package:schooltech/app/controllers/app_controller.dart';
+import 'package:schooltech/app/views/login/login_page.dart';
+import 'package:schooltech/app/views/student/home_student.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -9,12 +14,21 @@ class AppWidget extends StatelessWidget {
       animation: AppController.instance,
       builder: (context, child) {
         return MaterialApp(
-            theme: ThemeData(
-                primaryColor: Colors.deepPurpleAccent,
-                brightness: AppController.instance.isDark
-                    ? Brightness.dark
-                    : Brightness.light),
-            home: LoginPage());
+          theme: ThemeData(
+            primaryColor: Colors.deepPurpleAccent,
+            brightness: AppController.instance.isDark
+                ? Brightness.dark
+                : Brightness.light,
+          ),
+          routes: {
+            '/': (context) => WelcomePage(),
+            '/login': (context) => LoginPage(),
+            '/register': (context) => RegisterStudent(),
+            '/home-student': (context) => HomeStudent(),
+            '/details-course': (context) => CourseDetails(),
+            '/settings': (context) => SettingsView(),
+          },
+        );
       },
     );
   }
