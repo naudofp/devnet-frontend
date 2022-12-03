@@ -4,7 +4,7 @@ import 'package:schooltech/app/models/user/user_holder.dart';
 
 class UserService {
   final dio = Dio();
-  final String url = 'http://localhost:8080/user/login';
+  final String url = 'https://localhost:7268/api/user/login';
 
 //   POST   //
 

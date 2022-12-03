@@ -2,16 +2,16 @@ class CourseDetailsModel {
   int? id;
   String? nameCourse;
   int? scoreCourse;
-  List<String>? nameStudents;
+  List<String>? developers;
 
   CourseDetailsModel(
-      {this.id, this.nameCourse, this.scoreCourse, this.nameStudents});
+      {this.id, this.nameCourse, this.scoreCourse, this.developers});
 
   CourseDetailsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     nameCourse = json['nameCourse'];
     scoreCourse = json['scoreCourse'];
-    nameStudents = json['nameStudents'].cast<String>();
+    developers = json['developers'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
@@ -19,7 +19,7 @@ class CourseDetailsModel {
     data['id'] = this.id;
     data['nameCourse'] = this.nameCourse;
     data['scoreCourse'] = this.scoreCourse;
-    data['nameStudents'] = this.nameStudents;
+    data['developers'] = this.developers;
     return data;
   }
 }
