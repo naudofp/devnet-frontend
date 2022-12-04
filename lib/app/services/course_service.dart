@@ -3,7 +3,7 @@ import 'package:schooltech/app/models/course/card_details_mode.dart';
 import 'package:schooltech/app/models/course/course_card_model.dart';
 
 class CourseService {
-  String baseUrl = 'https://localhost:7268/api/course/';
+  String baseUrl = 'http://localhost:5114/api/course/';
   Dio dio = Dio();
 
   //  GET  COURSE-DETAILS //

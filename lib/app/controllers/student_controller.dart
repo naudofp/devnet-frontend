@@ -13,8 +13,8 @@ class StudentController {
     state = StudentState.LOADING;
 
     try {
-      state = StudentState.SUCCESS;
       holder = await service.postStudent(body);
+      state = StudentState.SUCCESS;
     } catch (e) {
       state = StudentState.ERROR;
     } finally {

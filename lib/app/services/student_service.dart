@@ -8,7 +8,7 @@ import 'package:schooltech/app/models/student/student_home.dart';
 import 'package:schooltech/app/models/user/user_holder.dart';
 
 class StudentService {
-  String baseUrl = 'https://localhost:7268/api/developer/';
+  String baseUrl = 'http://localhost:5114/api/developer/';
   Dio dio = Dio();
 
   // POST  STUDENT-REGISTER //
@@ -21,8 +21,8 @@ class StudentService {
 
   // POST  STUDENT-ADD-COURSE  //
   Future<Map?> addCourseOnStudent(idStudent, idCourse) async {
-    Uri url = Uri.https(
-        'localhost:7268', '/api/developer/add-course/$idCourse/$idStudent');
+    Uri url = Uri.http(
+        'localhost:5114', '/api/developer/add-course/$idCourse/$idStudent');
     final response = await http.post(url);
 
     if (response.statusCode == 200) {
@@ -35,7 +35,7 @@ class StudentService {
   // DELETE  STUDENT-REMOVE-COURSE  //
   Future<Map?> removeCourseOnStudent(idStudent, idCourse) async {
     Uri url = Uri.https(
-        'localhost:7268', '/api/developer/remove-course/$idCourse/$idStudent');
+        'localhost:5114', '/api/developer/remove-course/$idCourse/$idStudent');
     final response = await http.delete(url);
 
     if (response.statusCode == 200) {
@@ -47,7 +47,7 @@ class StudentService {
 
   // DELETE  STUDENT  //
   Future<Map?> deleteUser(idUser) async {
-    Uri url = Uri.https('localhost:7268', '/api/developer/$idUser');
+    Uri url = Uri.https('localhost:5114', '/api/developer/$idUser');
     final response = await http.delete(url);
     if (response.statusCode == 200 || response.statusCode == 201) {
       return {"message": response.body, "status": response.statusCode};
